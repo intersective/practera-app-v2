@@ -11,6 +11,26 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+/************
+  Font Size
+************/
+h2, .h2 {
+  font-size: 24px !important;
+}
+h3, .h3 {
+  font-size: 18px !important;
+}
+h4, .h4 {
+  font-size: 16px !important;
+}
+h5, .h5 {
+  font-size: 14px !important;
+}
+p, .p {
+  font-size: 16px !important;
+}
+
 // used in login, forgot password, regestration page
 .div-logo {
   margin-top: 10vh;
@@ -49,17 +69,16 @@ body {
 // used for todo-card & tasks list
 .icon-item {
   width: 100%;
-  h4 {
-    font-size: 14px;
+  h5 {
     text-overflow: ellipsis;
     margin-bottom: 0px;
     max-width: 80%;
   }
-  p {
-    font-size: 14px;
+  .h5 {
     font-weight: 500;
     text-overflow: ellipsis;
     margin-top: 0px;
+    margin-bottom: 10px;
     overflow: hidden;
     max-height: 16px;
     -webkit-line-clamp: 1;
@@ -67,38 +86,12 @@ body {
   }
 }
 
-.feedback-card {
-  position: relative;
-
-  .feedback-label {
-    padding: 3px 16px 3px 16px;
-    background-color: #fff;
-    position: absolute;
-    right: 0;
-    border-bottom-left-radius: 12px;
-    border-top-left-radius: 12px;
-    box-shadow: 0 4px 24px 4px rgba(18, 23, 81, 0.1);
-    bottom: -28px;
-
-    p {
-      font-size: 14px;
-      font-weight: normal;
-      color: var(--ion-color-primary);;
-      text-shadow: none;
-      height: 20px;
-      margin-top: 0px;
-    }
-  }
-}
-
-
 .background-white {
   background: white;
 }
 
 // question name
 .q-title {
-  font-size: 16px;
   font-weight: bold;
   display: block;
   padding-bottom: 0;

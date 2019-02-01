@@ -16,7 +16,7 @@
 
     <div *ngIf="!reviews.length; else reviewsCard" class="no-review-show" padding text-center>
       <div class="empty-status background-white" >
-        <h2 text-center>You have no new submissions to review</h2>
+        <h3 text-center>You have no new submissions to review</h3>
       </div>
     </div>
     <ng-template #reviewsCard>
@@ -28,8 +28,8 @@
           (click)="gotoReview(review.contextId, review.assessmentId, review.submissionId)"
         >
           <ion-card-content class="review">
-            <h2>{{review.name}}</h2>
-            <ion-icon *ngIf="review.isDone" name="checkmark-circle" class="check-mark"></ion-icon>
+            <h3>{{review.name}}</h3>
+            <ion-icon *ngIf="review.isDone" name="checkmark-circle" class="check-mark h2"></ion-icon>
             <h4 padding-top>{{review.submitterName}}</h4>
             <h4 *ngIf="review.teamName">{{review.teamName}}</h4>
             <ion-text>{{review.date}}</ion-text>

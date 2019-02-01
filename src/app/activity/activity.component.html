@@ -33,14 +33,14 @@
           </ng-container>
 
           <div class="icon-item">
-            <h4>{{ task.name }}</h4>
-            <p>
+            <h5>{{ task.name }}</h5>
+            <div class="h5">
               <ion-text *ngIf="task.type != 'Locked'" [color]="task.status == 'feedback available' ? 'primary' : 'medium'">
                 {{ task.type }}
                 <ng-container *ngIf="!task.loadingStatus; else spinner">{{ task.status }}</ng-container>
                 <ng-template #spinner><ion-spinner name="dots" class="vertical-middle"></ion-spinner></ng-template>
               </ion-text>
-            </p>
+            </div>
           </div>
 
           <ng-container *ngIf="!task.loadingStatus; else iconSpinner">

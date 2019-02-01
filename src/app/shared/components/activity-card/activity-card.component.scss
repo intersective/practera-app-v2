@@ -8,13 +8,37 @@
   background-blend-mode: soft-light;
   background-color: transparent;
   .activity-name {
-    font-size: 18px;
     font-weight: bold;
   }
   &:last-child {
     margin-bottom: 5px;
   }
 }
+
+.feedback-card {
+  position: relative;
+
+  .feedback-label {
+    padding: 3px 16px 3px 16px;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    box-shadow: 0 4px 24px 4px rgba(18, 23, 81, 0.1);
+    bottom: -28px;
+
+    p {
+      font-size: 14px;
+      font-weight: normal;
+      color: var(--ion-color-primary);;
+      text-shadow: none;
+      height: 20px;
+      margin-top: 0px;
+    }
+  }
+}
+
 .locked-card {
   background-color: var(--ion-color-medium);
 }

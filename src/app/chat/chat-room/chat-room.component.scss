@@ -128,7 +128,6 @@
 
         .message-text {
           color: black;
-          font-size: 16px;
           line-height: 24px;
           margin: 0;
           text-align: left;
@@ -137,7 +136,6 @@
 
           a.linkified {
             color: black;
-            font-size: 16px;
             line-height: 24px;
             margin: 0;
             text-align: left;
@@ -181,7 +179,6 @@
             color: white !important;
             a.linkified {
               color: white !important;
-              font-size: 16px;
               line-height: 24px;
               margin: 0;
               text-align: left;
@@ -206,11 +203,6 @@ ion-footer {
       ion-icon {
         color: var(--practera-chat-footer-text-color) !important;
       }
-    }
-
-    ion-input {
-      color: var(--practera-chat-footer-text-color) !important;
-      font-size: small;
     }
   }
 }

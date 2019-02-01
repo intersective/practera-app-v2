@@ -19,13 +19,23 @@
         </ion-avatar>
         <ion-label>
           <div class="chat-name-container">
-            <h2 [class]="chat.is_team ? 'chat-name team-channel' : 'chat-name'">{{chat.name}}</h2>
-            <ng-container *ngIf="(chat.role === 'mentor') && (haveMoreTeam)"><span>mentor - {{chat.team_name}}</span></ng-container>
-            <ng-container *ngIf="(chat.role === 'mentor') && (!haveMoreTeam)"><span>mentor</span></ng-container>
-            <ng-container *ngIf="(chat.role !== 'mentor') && (!chat.is_team) && (haveMoreTeam)"><span>{{chat.team_name}}</span></ng-container>
+            <h3 [class]="chat.is_team ? 'chat-name team-channel' : 'chat-name'">{{chat.name}}</h3>
+            <ng-container *ngIf="(chat.role === 'mentor') && (haveMoreTeam)">
+              <span>mentor - {{chat.team_name}}</span>
+            </ng-container>
+            <ng-container *ngIf="(chat.role === 'mentor') && (!haveMoreTeam)">
+              <span>mentor</span>
+            </ng-container>
+            <ng-container *ngIf="(chat.role !== 'mentor') && (!chat.is_team) && (haveMoreTeam)">
+              <span>{{chat.team_name}}</span>
+            </ng-container>
           </div>
-          <ng-container *ngIf="chat.last_message; else messgeElseBlock"><p>{{chat.last_message}}</p></ng-container>
-          <ng-template #messgeElseBlock><p>No messages.</p></ng-template>
+          <ng-container *ngIf="chat.last_message; else messgeElseBlock">
+            <h4>{{chat.last_message}}</h4>
+          </ng-container>
+          <ng-template #messgeElseBlock>
+            <h4>No messages.</h4>
+          </ng-template>
         </ion-label>
         <div slot="end" class="time-container">
           <span>{{getChatDate(chat.last_message_created)}}</span>
