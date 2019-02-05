@@ -21,9 +21,18 @@ export class ChatListComponent extends RouterEnter {
     private chatService: ChatService,
     public router: Router,
     public storage: BrowserStorageService,
-    public utils: UtilsService
+    public utils: UtilsService,
   ) {
-    super(router, utils, storage);
+    super(router);
+    let role = this.storage.getUser().role;
+    this.utils.getEvent('team-message').subscribe(event => {
+      this._loadChatData();
+    });
+    if (role !== 'mentor') {
+      this.utils.getEvent('team-no-mentor-message').subscribe(event => {
+        this._loadChatData();
+      });
+    }
   }
 
   onEnter() {
