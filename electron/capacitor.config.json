@@ -1,0 +1,7 @@
+{
+  "appId": "app.practera.project",
+  "appName": "practera-project",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
