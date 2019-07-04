@@ -41,6 +41,13 @@ export class SharedService {
     if (color) {
       this.utils.changeThemeColor(color);
     }
+
+    // check and change theme font on every page refresh
+    const font = this.storage.getUser().themeFont;
+    if (font) {
+      this.utils.changeThemeFont(font);
+    }    
+    
     const image = this.storage.getUser().activityCardImage;
     if (image) {
       this.utils.changeCardBackgroundImage(image);

@@ -70,6 +70,10 @@ export class UtilsService {
     return array;
   }
 
+  changeThemeFont(font) {
+    this.document.documentElement.style.setProperty('--ion-font-family', font);
+  }
+
   changeThemeColor(color) {
     this.document.documentElement.style.setProperty('--ion-color-primary', color);
     this.document.documentElement.style.setProperty('--ion-color-primary-shade', color);
