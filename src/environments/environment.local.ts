@@ -1,7 +1,8 @@
 export const environment = {
   production: false,
   appkey: 'b11e7c189b',
-  pusherKey: '255f010d210933ca7675',
+  pusherKey: 'c8f1e1cba0f717e24046',
+  pusherCluster: 'ap1',
   env: 'develop',
   APIEndpoint: 'http://127.0.0.1:8080/',
   intercomAppId: '',

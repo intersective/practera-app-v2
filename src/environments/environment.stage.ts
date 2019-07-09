@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
   appkey: 'b11e7c189b',
-  pusherKey: '255f010d210933ca7675',
+  pusherKey: 'c8f1e1cba0f717e24046',
+  pusherCluster: 'ap1',
   env: 'sandbox',
   APIEndpoint: 'https://stage.practera.com/',
   intercomAppId: 'pef1lmo8',

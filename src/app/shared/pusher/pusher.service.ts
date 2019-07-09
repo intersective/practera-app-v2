@@ -16,6 +16,7 @@ const api = {
 export class PusherConfig {
   pusherKey = '';
   apiurl = '';
+  pusherCluster = '';
 }
 
 @Injectable({
@@ -24,6 +25,7 @@ export class PusherConfig {
 
 export class PusherService {
   private pusherKey: string;
+  private pusherCluster: string;
   private apiurl: string;
   private pusher;
   private channelNames = {
@@ -48,6 +50,7 @@ export class PusherService {
   ) {
     if (config) {
       this.pusherKey = config.pusherKey;
+      this.pusherCluster = config.pusherCluster;
       this.apiurl = config.apiurl;
     }
   }
@@ -61,7 +64,7 @@ export class PusherService {
     }
     try {
       this.pusher = new Pusher(this.pusherKey, {
-        cluster: 'mt1',
+        cluster: this.pusherCluster,
         forceTLS: true,
         authEndpoint: this.apiurl + api.pusherAuth,
         auth: {

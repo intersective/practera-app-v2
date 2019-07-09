@@ -46,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PusherModule.forRoot({
       apiurl: environment.APIEndpoint,
       pusherKey: environment.pusherKey,
+      pusherCluster: environment.pusherCluster,
     }),
     IntercomModule.forRoot({
       appId: environment.intercomAppId,
