@@ -10,6 +10,7 @@ import { NotificationService } from '@shared/notification/notification.service';
 import { ActivityService, Task, OverviewActivity, OverviewTask } from '../activity/activity.service';
 import { SharedService } from '@services/shared.service';
 import { Subscription, Observable } from 'rxjs';
+import { DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-topic',
@@ -48,7 +49,8 @@ export class TopicComponent extends RouterEnter {
     public notificationService: NotificationService,
     private activityService: ActivityService,
     private sharedService: SharedService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private sanitizer: DomSanitizer
   ) {
     super(router);
   }
@@ -86,8 +88,20 @@ export class TopicComponent extends RouterEnter {
       .subscribe(topic => {
         this.topic = topic;
         this.loadingTopic = false;
-        if ( topic.videolink ) {
-          this.iframeHtml = this.embedService.embed(this.topic.videolink);
+        console.log(this.topic.videolink.indexOf('kaltura'));
+        if ( this.topic.videolink.indexOf('kaltura') == 0 ) {
+            console.log(topic.videolink.split('/'));
+            let bits = topic.videolink.split('/');
+            let entryId = bits[1];
+            let partnerId = bits[2];
+            let uiconfId = bits[3];
+            let playerId = 'sdf0in23f';
+            let url = 'https://cdnapisec.kaltura.com/p/' + partnerId + '/sp/' + partnerId + '00/embedIframeJs/uiconf_id/' + uiconfId +'/partner_id/' + partnerId + '?iframeembed=true&playerId=kaltura_player_' + playerId + '&entry_id='+ entryId;
+            this.sanitizer.bypassSecurityTrustResourceUrl(url);
+            this.iframeHtml = '<iframe id="kaltura_player_'+ playerId + '" src="' + url + '" width="auto" height="auto" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>';
+            //console.log(this.iframeHtml);
+          } else if (this.topic.videolink) {
+            this.iframeHtml = this.embedService.embed(this.topic.videolink);
         }
       });
   }

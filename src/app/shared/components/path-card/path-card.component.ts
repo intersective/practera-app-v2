@@ -63,7 +63,19 @@ export class PathCardComponent implements OnInit {
     window.location = url;
   }
 
-  async switch(index) {
+  async passport(appId: string) {
+    const loading = await this.loadingController.create({
+      message: 'loading...'
+    });
+    return this.switcherService.getAppUri(appId).subscribe(uri => {
+      loading.dismiss().then(() => {
+        if (uri) {
+          window.location = uri;
+        }
+      });
+    });   
+  }
+  async switch(index: number) {
     const loading = await this.loadingController.create({
       message: 'loading...'
     });

@@ -1,5 +1,13 @@
 {
   "name": "practera-app",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://sandbox.practera.com/api"
+    }
+  ]
 }

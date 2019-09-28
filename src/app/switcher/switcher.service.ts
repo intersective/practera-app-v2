@@ -14,7 +14,8 @@ import { SharedService } from '@services/shared.service';
  */
 const api = {
   me: 'api/users.json',
-  teams: 'api/teams.json'
+  teams: 'api/teams.json',
+  direct_link: 'api/magiclink.json'
 };
 
 export interface ProgramObj {
@@ -137,5 +138,19 @@ export class SwitcherService {
       }
       return response;
     }));
+  }
+
+  /**
+   * @name getAppUri
+   * @description get login link for another experience/app - e.g. passport
+   */
+
+  getAppUri(appId: string): Observable<any> {
+    return this.request.get(api.direct_link)
+      .pipe(map(response => {
+        if (response.success && response.data) {
+          return response.data.uri;
+        }
+      }));
   }
 }
