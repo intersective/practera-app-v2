@@ -22,7 +22,8 @@ const api = {
   register: 'api/registration_details.json',
   forgotPassword: 'api/auths.json?action=forgot_password',
   verifyResetPassword: 'api/auths.json?action=verify_reset_password',
-  resetPassword: 'api/auths.json?action=reset_password'
+  resetPassword: 'api/auths.json?action=reset_password',
+  crcpLogin:'login'
 };
 
 interface VerifyParams {
@@ -83,6 +84,7 @@ export class AuthService {
     }).pipe(map(res => this._handleLoginResponse(res)));
   }
 
+  
   /**
    * @name login
    * @description login API specifically only accept request data in encodedUrl formdata,
@@ -99,7 +101,19 @@ export class AuthService {
 
     return this._login(body);
   }
+  crcpLogin({ email }): Observable<any> {
+    // const body = new HttpParams({
+    //     encoder: new QueryEncoder()
+    //   })
+    //   .set('email', email)
+    //   .set('triggerEvent', 'login')
+    const body = {email: email ,'triggerEvent': 'login' }
+      console.log('body is:', body);
 
+    return  this.request.postCRCP(api.crcpLogin, body, {
+      headers: { 'Content-Type': 'application/json' }
+    }).pipe(map(res => console.log(res)));
+  }
   /**
    * @name directLogin
    * @description login API specifically only accept request data in encodedUrl formdata,

@@ -166,6 +166,23 @@ export class RequestService {
       );
   }
 
+  postCRCP(endPoint: string = '', data, httpOptions?: any): Observable<any> {
+    if (!httpOptions) {
+      httpOptions = {};
+    }
+
+    if (!this.utils.has(httpOptions, 'headers')) {
+      httpOptions.headers = '';
+    }
+    if (!this.utils.has(httpOptions, 'params')) {
+      httpOptions.params = '';
+    }
+
+    return this.http.post<any>(environment.CRCPAPIEndpoint + 'login', data)
+      .pipe(
+        catchError((error) => this.handleError(error))
+      );
+  }
   delete(endPoint: string = '', httpOptions?: any): Observable<any> {
     if (!httpOptions) {
       httpOptions = {};
