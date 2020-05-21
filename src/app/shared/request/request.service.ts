@@ -5,6 +5,8 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, concatMap } from 'rxjs/operators';
 import { UtilsService } from '@services/utils.service';
 import { BrowserStorageService } from '@services/storage.service';
+import { environment } from '@environments/environment';
+import { NewRelicService } from '@shared/new-relic/new-relic.service';
 
 @Injectable({ providedIn: 'root' })
 export class DevModeService {
@@ -50,6 +52,7 @@ export class RequestService {
     private storage: BrowserStorageService,
     private router: Router,
     @Optional() config: RequestConfig,
+    private newrelic: NewRelicService,
     private devMode: DevModeService
   ) {
     if (config) {
@@ -63,8 +66,8 @@ export class RequestService {
    * @param {'Content-Type': string } header
    * @returns {HttpHeaders}
    */
-  appendHeaders(header = {'Content-Type': 'application/json'}) {
-    const headers = new HttpHeaders(header);
+  appendHeaders(header = {}) {
+    const headers = new HttpHeaders(Object.assign({'Content-Type': 'application/json'}, header));
     return headers;
   }
 
@@ -150,6 +153,19 @@ export class RequestService {
       );
   }
 
+  postGraphQL(data): Observable<any> {
+    return this.http.post<any>(environment.graphQL, data, {
+      headers: this.appendHeaders()
+    })
+      .pipe(concatMap(response => {
+        this._refreshApikey(response);
+        return of(response);
+      }))
+      .pipe(
+        catchError((error) => this.handleError(error))
+      );
+  }
+
   delete(endPoint: string = '', httpOptions?: any): Observable<any> {
     if (!httpOptions) {
       httpOptions = {};
@@ -215,7 +231,7 @@ export class RequestService {
       );
       this.router.navigate(['logout']);
     }
-
+    this.newrelic.noticeError(error);
     // if error.error is a html template error (when try to read remote version.txt)
     if (typeof error.error === 'string' && error.error.indexOf('<!DOCTYPE html>') !== -1) {
       return throwError(error.message);

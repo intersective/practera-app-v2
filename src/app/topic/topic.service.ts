@@ -69,8 +69,12 @@ export class TopicService {
     }
     topic.id = thisTopic.Story.id;
     topic.title = thisTopic.Story.title;
-    if (this.utils.has(thisTopic.Story, 'content')) {
+    // if API return empty string ("") to content, utils.has (lodash) take it as a value and this if statement works and set json to content
+    // to privent that we checking topic content is not equels to empty string.
+    if (this.utils.has(thisTopic.Story, 'content') && !this.utils.isEmpty(thisTopic.Story.content)) {
       thisTopic.Story.content = thisTopic.Story.content.replace(/text-align: center;/gi, 'text-align: center; text-align: -webkit-center;');
+      thisTopic.Story.content = thisTopic.Story.content.replace(/(<iframe)/g, '<div class="video-embed"><iframe').replace(/(<\/iframe>)/g, '</iframe></div>');
+      thisTopic.Story.content = thisTopic.Story.content.replace(/(<video)/g, '<video  class="video-embed"');
       topic.content = this.sanitizer.bypassSecurityTrustHtml(thisTopic.Story.content);
     }
     if (this.utils.has(thisTopic.Story, 'videolink')) {
@@ -104,7 +108,7 @@ export class TopicService {
         });
         return progress.progress;
       } else {
-          return false;
+        return false;
       }
     }));
   }

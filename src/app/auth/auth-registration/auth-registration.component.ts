@@ -13,6 +13,7 @@ import {
 import { AuthService } from '../auth.service';
 import { BrowserStorageService } from '@services/storage.service';
 import { NewRelicService } from '@shared/new-relic/new-relic.service';
+import { SwitcherService } from '../../switcher/switcher.service';
 
 @Component({
   selector: 'app-auth-registration',
@@ -34,6 +35,7 @@ export class AuthRegistrationComponent implements OnInit {
   domain = window.location.hostname;
   // validation errors array
   errors: Array<any> = [];
+  showPassword = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +43,8 @@ export class AuthRegistrationComponent implements OnInit {
     private utils: UtilsService,
     private storage: BrowserStorageService,
     private notificationService: NotificationService,
-    private newRelic: NewRelicService
+    private newRelic: NewRelicService,
+    private switcherService: SwitcherService
   ) {
     this.initForm();
   }
@@ -173,10 +176,10 @@ export class AuthRegistrationComponent implements OnInit {
                 password: this.confirmPassword
               })
               .subscribe(
-                res => {
+                async res => {
                   nrAutoLoginTracer();
-                  const redirect = ['switcher'];
-                  this.showPopupMessages('shortMessage', 'Registration success!', redirect);
+                  const route = await this.switcherService.switchProgramAndNavigate(res.programs);
+                  this.showPopupMessages('shortMessage', 'Registration success!', route);
                 },
                 err => {
                   nrAutoLoginTracer();

@@ -1,414 +1,222 @@
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { ActivityService, Overview } from './activity.service';
+import { TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing';
+import { ActivityService } from './activity.service';
 import { of } from 'rxjs';
 import { RequestService } from '@shared/request/request.service';
 import { UtilsService } from '@services/utils.service';
-import { OverviewFixture, RawOverviewRes } from '@testing/fixtures/overview';
+import { NotificationService } from '@shared/notification/notification.service';
+import { Router } from '@angular/router';
+import { MockRouter } from '@testing/mocked.service';
 
 describe('ActivityService', () => {
   let service: ActivityService;
   let requestSpy: jasmine.SpyObj<RequestService>;
+  let routerSpy: jasmine.SpyObj<Router>;
+  let notificationSpy: jasmine.SpyObj<NotificationService>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         ActivityService,
+        UtilsService,
         {
           provide: RequestService,
           useValue: jasmine.createSpyObj('RequestService', [
             'get',
             'post',
-            'apiResponseFormatError'
+            'postGraphQL'
           ])
+        },
+        {
+          provide: NotificationService,
+          useValue: jasmine.createSpyObj('NotificationService', ['activityCompletePopUp'])
+        },
+        {
+          provide: Router,
+          useClass: MockRouter,
         },
       ]
     });
-    service = TestBed.get(ActivityService);
-    requestSpy = TestBed.get(RequestService);
+    service = TestBed.inject(ActivityService);
+    requestSpy = TestBed.inject(RequestService) as jasmine.SpyObj<RequestService>;
+    routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
+    notificationSpy = TestBed.inject(NotificationService) as jasmine.SpyObj<NotificationService>;
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  /*describe('getCurrentActivityStatus()', () => {
-    const projectId = 1;
-    const activityId = 1;
-
-    const expectedResult = {
-      currentMilestoneIndex: null,
-      currentMilestone: null,
-      currentActivity: null,
-    };
-
-    it('getOverview should be triggered', fakeAsync(() => {
-      service.getOverview = jasmine.createSpy('getOverview').and.returnValue(of(true));
-      service.getCurrentActivityStatus(projectId, activityId).subscribe();
-      tick();
-      expect(service.getOverview).toHaveBeenCalled();
-    }));
-  });*/
-
-  /*describe('getTasksByActivityId()', () => {
-    const projectId = 1;
-    const activityId = 1;
-
-    it('getOverview should be triggered', fakeAsync (() => {
-      const getOverviewSpy = jasmine.createSpy('getOverview').and.returnValue(of(true));
-      const test = service.getTasksByActivityId(projectId, activityId, {
-        currentTaskId: 1,
-        teamId: 1,
-      });
-      tick();
-      expect(service.getOverview).toHaveBeenCalled();
-    }));
-  });*/
-
-  describe('when testing getActivity()', () => {
+  it('when testing getActivity(), should get the correct data', () => {
     const requestResponse = {
-      success: true,
-      data: [
-        {
-          Activity: {
-            id: 1,
-            name: 'activity',
-            description: 'des'
-          },
-          ActivitySequence: [
+      data: {
+        activity: {
+          id: 1,
+          name: 'activity',
+          description: 'des',
+          tasks: [
             {
-              is_locked: true
+              id: 1,
+              type: 'topic',
+              name: 'topic 1',
+              isLocked: true
             },
             {
-              model: 'Story.Topic',
-              'Story.Topic': {
-                id: 11,
-                title: 'topic 11'
+              id: 11,
+              type: 'topic',
+              name: 'topic 2',
+              isLocked: false,
+              status: {
+                status: 'done'
               }
             },
             {
-              model: 'Assess.Assessment',
-              'Assess.Assessment': {
-                id: 21,
-                name: 'asmt 21',
-                is_team: false,
-                deadline: '2019-02-02'
+              id: 21,
+              type: 'assessment',
+              name: 'asmt 21',
+              isTeam: false,
+              isLocked: false,
+              deadline: '2019-02-02',
+              contextId: 211,
+              status: {
+                status: 'in progress',
+                isLocked: false,
+                submitterName: 'sub name',
+                submitterImage: 'sub image'
               }
-            }
-          ],
-          References: [
+            },
             {
-              Assessment: {
-                id: 21
-              },
-              context_id: 211
+              id: 22,
+              type: 'assessment',
+              name: 'asmt 22',
+              isTeam: false,
+              isLocked: false,
+              deadline: '2039-02-02',
+              contextId: 211,
+              status: {
+                status: 'pending approval',
+                isLocked: false,
+                submitterName: 'sub name',
+                submitterImage: 'sub image'
+              }
             }
           ]
         }
-      ]
+      }
     };
-    const activity = requestResponse.data[0];
+    const activity = requestResponse.data.activity;
+    const topic1 = JSON.parse(JSON.stringify(activity.tasks[0]));
+    const topic2 = JSON.parse(JSON.stringify(activity.tasks[1]));
+    const assessment1 = JSON.parse(JSON.stringify(activity.tasks[2]));
+    const assessment2 = JSON.parse(JSON.stringify(activity.tasks[3]));
     const expected = {
-      id: activity.Activity.id,
-      name: activity.Activity.name,
-      description: activity.Activity.description,
+      id: activity.id,
+      name: activity.name,
+      description: activity.description,
       tasks: [
         {
           id: 0,
           type: 'Locked',
-          name: 'Locked',
-          loadingStatus: false
+          name: 'Locked'
         },
         {
-          id: 11,
+          id: topic2.id,
           type: 'Topic',
-          name: requestResponse.data[0].ActivitySequence[1]['Story.Topic'].title,
-          loadingStatus: true
+          name: topic2.name,
+          status: topic2.status.status
         },
         {
-          id: 21,
+          id: assessment1.id,
           type: 'Assessment',
-          name: requestResponse.data[0].ActivitySequence[2]['Assess.Assessment'].name,
+          name: assessment1.name,
           contextId: 211,
-          isForTeam: requestResponse.data[0].ActivitySequence[2]['Assess.Assessment'].is_team,
-          dueDate: requestResponse.data[0].ActivitySequence[2]['Assess.Assessment'].deadline,
+          isForTeam: assessment1.isTeam,
+          dueDate: assessment1.deadline,
           isOverdue: true,
           isDueToday: false,
-          loadingStatus: true
-        }
-      ]
-    };
-
-    it('should throw format error #1', () => {
-      const tmpRes = JSON.parse(JSON.stringify(requestResponse));
-      tmpRes.data = {};
-      requestSpy.get.and.returnValue(of(tmpRes));
-      service.getActivity(1).subscribe();
-      expect(requestSpy.apiResponseFormatError.calls.count()).toBe(1);
-      expect(requestSpy.apiResponseFormatError.calls.first().args[0]).toEqual('Activity format error');
-    });
-
-    it('should throw format error #2', () => {
-      const tmpRes = JSON.parse(JSON.stringify(requestResponse));
-      tmpRes.data[0].ActivitySequence[1] = {};
-      requestSpy.get.and.returnValue(of(tmpRes));
-      service.getActivity(1).subscribe();
-      expect(requestSpy.apiResponseFormatError.calls.count()).toBe(1);
-      expect(requestSpy.apiResponseFormatError.calls.first().args[0]).toEqual('Activity.ActivitySequence format error');
-    });
-
-    it('should get the correct data', () => {
-      requestSpy.get.and.returnValue(of(requestResponse));
-      service.getActivity(1).subscribe(res => expect(res).toEqual(expected));
-    });
-  });
-
-  describe('when testing getAssessmentStatus()', () => {
-    const requestResponse = {
-      success: true,
-      data: [
+          status: assessment1.status.status,
+          isLocked: assessment1.status.isLocked,
+          submitter: {
+            name: assessment1.status.submitterName,
+            image: assessment1.status.submitterImage
+          }
+        },
         {
-          AssessmentSubmission: {
-            is_locked: false,
-            status: 'in progress'
-          },
-          Submitter: {
-            name: 'submitter',
-            image: 'image'
+          id: assessment2.id,
+          type: 'Assessment',
+          name: assessment2.name,
+          contextId: assessment2.contextId,
+          isForTeam: assessment2.isTeam,
+          dueDate: assessment2.deadline,
+          isOverdue: false,
+          isDueToday: false,
+          status: 'pending review',
+          isLocked: assessment2.status.isLocked,
+          submitter: {
+            name: assessment2.status.submitterName,
+            image: assessment2.status.submitterImage
           }
         }
       ]
     };
-    const task = {
-      id: 1,
-      name: 'name',
-      type: 'Assessment',
-      progress: 0
-    };
-    const expected = {
-      id: task.id,
-      name: task.name,
-      type: task.type,
-      progress: 0,
-      isLocked: requestResponse.data[0].AssessmentSubmission.is_locked,
-      submitter: {
-        name: requestResponse.data[0].Submitter.name,
-        image: requestResponse.data[0].Submitter.image
-      },
-      status: 'in progress',
-      loadingStatus: false
-    };
+    requestSpy.postGraphQL.and.returnValue(of(requestResponse));
+    service.getActivity(1).subscribe(res => expect(res).toEqual(expected));
+  });
 
-    it('should return empty status', () => {
-      const tmpRes = JSON.parse(JSON.stringify(requestResponse));
-      tmpRes.data = [];
-      requestSpy.get.and.returnValue(of(tmpRes));
-      service.getAssessmentStatus(task).subscribe(res => expect(res).toEqual({
-        id: task.id,
-        name: task.name,
-        type: task.type,
-        status: '',
-        progress: 0,
-        loadingStatus: false
+  describe('when testing gotoNextTask()', () => {
+    it('should go to home page', fakeAsync(() => {
+      requestSpy.get.and.returnValue(of({
+        data: {
+          is_last: true,
+          task: null
+        }
       }));
-    });
-
-    it('should throw format error', () => {
-      const tmpRes = JSON.parse(JSON.stringify(requestResponse));
-      tmpRes.data[0] = {};
-      requestSpy.get.and.returnValue(of(tmpRes));
-      service.getAssessmentStatus(task).subscribe();
-      expect(requestSpy.apiResponseFormatError.calls.count()).toBe(1);
-    });
-
-    describe('should return correct data', () => {
-      let tmpRes;
-      let tmpExpected;
-      let tmpTask;
-      beforeEach(() => {
-        tmpRes = JSON.parse(JSON.stringify(requestResponse));
-        tmpTask = JSON.parse(JSON.stringify(task));
-        tmpExpected = JSON.parse(JSON.stringify(expected));
-      });
-      afterEach(() => {
-        requestSpy.get.and.returnValue(of(tmpRes));
-        service.getAssessmentStatus(tmpTask).subscribe(res => expect(res).toEqual(tmpExpected));
-      });
-
-      it('#1', () => {
-        // don't need to change anything
-      });
-      it('#2', () => {
-        tmpRes.data[0].AssessmentSubmission.status = 'pending approval';
-        tmpExpected.status = 'pending review';
-      });
-      it('#3', () => {
-        tmpRes.data[0].AssessmentSubmission.status = 'pending review';
-        tmpExpected.status = 'pending review';
-      });
-      it('#4', () => {
-        tmpRes.data[0].AssessmentSubmission.status = 'published';
-        tmpExpected.status = 'feedback available';
-        tmpExpected.feedbackReviewed = false;
-      });
-      it('#5', () => {
-        tmpRes.data[0].AssessmentSubmission.status = 'published';
-        tmpExpected.status = 'done';
-        tmpTask.progress = 1;
-        tmpExpected.progress = 1;
-        tmpExpected.feedbackReviewed = true;
-      });
-      it('#6', () => {
-        tmpRes.data[0].AssessmentSubmission.status = 'done';
-        tmpExpected.status = 'done';
-      });
-    });
-  });
-
-  describe('when testing getTasksProgress()', () => {
-    const options = {
-      model_id: 1,
-      tasks: [
-        {
-          id: 11,
-          type: 'Topic',
-          name: 'topic 11'
-        },
-        {
-          id: 12,
-          type: 'Topic',
-          name: 'topic 12'
-        },
-        {
-          id: 13,
-          type: 'Topic',
-          name: 'topic 13'
-        },
-        {
-          id: 21,
-          type: 'Assessment',
-          name: 'asmt 21'
-        },
-        {
-          id: 22,
-          type: 'Assessment',
-          name: 'asmt 21'
+      service.gotoNextTask(1, 'assessment', 2);
+      tick();
+      expect(routerSpy.navigate.calls.first().args[0]).toEqual(['app', 'home']);
+      expect(routerSpy.navigate.calls.first().args[1]).toEqual({ queryParams: { activityId: 1, activityCompleted: true }});
+    }));
+    it('should pop up modal', fakeAsync(() => {
+      requestSpy.get.and.returnValue(of({
+        data: {
+          is_last: true,
+          task: {
+            id: 11,
+            name: 'assessment1',
+            type: 'assessment',
+            context_id: 12
+          }
         }
-      ]
-    };
-    const requestResponse = {
-      success: true,
-      data: {
-        Activity: {
-          Topic: [
-            {
-              id: 11,
-              progress: 0
-            },
-            {
-              id: 12,
-              progress: 1
-            }
-          ],
-          Assessment: [
-            {
-              id: 21,
-              progress: 1
-            }
-          ]
+      }));
+      service.gotoNextTask(1, 'assessment', 2);
+      tick();
+      expect(notificationSpy.activityCompletePopUp.calls.count()).toBe(1);
+    }));
+    it('should go to assessment page', fakeAsync(() => {
+      requestSpy.get.and.returnValue(of({
+        data: {
+          is_last: false,
+          task: {
+            id: 11,
+            name: 'assessment1',
+            type: 'assessment',
+            context_id: 12
+          }
         }
-      }
-    };
-    const expected = [
-      {
-        id: options.tasks[0].id,
-        type: options.tasks[0].type,
-        name: options.tasks[0].name,
-        progress: requestResponse.data.Activity.Topic[0].progress,
-        status: '',
-        loadingStatus: false
-      },
-      {
-        id: options.tasks[1].id,
-        type: options.tasks[1].type,
-        name: options.tasks[1].name,
-        progress: requestResponse.data.Activity.Topic[1].progress,
-        status: 'done',
-        loadingStatus: false
-      },
-      {
-        id: options.tasks[2].id,
-        type: options.tasks[2].type,
-        name: options.tasks[2].name,
-        progress: 0,
-        status: '',
-        loadingStatus: false
-      },
-      {
-        id: options.tasks[3].id,
-        type: options.tasks[3].type,
-        name: options.tasks[3].name,
-        progress: requestResponse.data.Activity.Assessment[0].progress
-      },
-      {
-        id: options.tasks[4].id,
-        type: options.tasks[4].type,
-        name: options.tasks[4].name,
-        progress: 0
-      }
-    ];
-
-    describe('should throw format error', () => {
-      let tmpRes;
-      let tmpExpected;
-      let tmpOptions;
-      let errMsg;
-      beforeEach(() => {
-        tmpRes = JSON.parse(JSON.stringify(requestResponse));
-        tmpOptions = JSON.parse(JSON.stringify(options));
-        tmpExpected = JSON.parse(JSON.stringify(expected));
-      });
-      afterEach(() => {
-        requestSpy.get.and.returnValue(of(tmpRes));
-        service.getTasksProgress(tmpOptions).subscribe();
-        expect(requestSpy.apiResponseFormatError.calls.count()).toBe(1);
-        expect(requestSpy.apiResponseFormatError.calls.first().args[0]).toEqual(errMsg);
-      });
-
-      it('Progress.Activity format error', () => {
-        tmpRes.data = {};
-        errMsg = 'Progress.Activity format error';
-      });
-      it('Progress.Activity.Topic format error', () => {
-        tmpRes.data.Activity.Topic[0] = {id: 11};
-        errMsg = 'Progress.Activity.Topic format error';
-      });
-      it('Progress.Activity.Assessment format error', () => {
-        tmpRes.data.Activity.Assessment[0] = {id: 21};
-        errMsg = 'Progress.Activity.Assessment format error';
-      });
-    });
-
-    it('should get correct data', () => {
-      requestSpy.get.and.returnValue(of(requestResponse));
-      service.getTasksProgress(options).subscribe(res => expect(res).toEqual(expected));
-    });
-
+      }));
+      service.gotoNextTask(1, 'assessment', 2).then(res => expect(res).toEqual(['assessment', 'assessment', '1', '12', '11']));
+    }));
+    it('should go to topic page', fakeAsync(() => {
+      requestSpy.get.and.returnValue(of({
+        data: {
+          is_last: false,
+          task: {
+            id: 11,
+            name: 'topic1',
+            type: 'topic'
+          }
+        }
+      }));
+      service.gotoNextTask(1, 'topic', 2).then(res => expect(res).toEqual(['topic', '1', '11']));
+    }));
   });
-
-  describe('getOverview()', function() {
-    let response;
-    const projectId = 1;
-    const overviewList = OverviewFixture;
-
-    beforeEach(async() => {
-      requestSpy.get.and.returnValue(of({data: overviewList}));
-      response = await service.getOverview(projectId).toPromise();
-    });
-
-    it('should return project overview', () => {
-      expect(requestSpy.get).toHaveBeenCalled();
-      expect(response).toEqual(OverviewFixture);
-    });
-  });
-
 });

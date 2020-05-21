@@ -6,6 +6,7 @@ import { environment } from '@environments/environment';
 import { BrowserStorageService } from '@services/storage.service';
 import { HttpClient } from '@angular/common/http'; // added to make one and only API call to filestack server
 import { Observable } from 'rxjs/Observable';
+import { forkJoin } from 'rxjs';
 import { NotificationService } from '@shared/notification/notification.service';
 import { UtilsService } from '@services/utils.service';
 
@@ -44,7 +45,11 @@ export class FilestackService {
     private notificationService: NotificationService,
     private utils: UtilsService
   ) {
-    this.filestack = filestack.init(this.getFilestackConfig());
+    const { policy, signature } = environment.filestack;
+    this.filestack = filestack.init(this.getFilestackConfig(), {
+      policy,
+      signature,
+    });
 
     if (!this.filestack) {
       throw new Error('Filestack module not found.');
@@ -71,22 +76,36 @@ export class FilestackService {
 
   // get s3 config
   getS3Config(fileType) {
-    let path = environment.filestack.s3Config.paths.any;
+    let location, container, region, workflows, paths;
+    ({
+      location,
+      container,
+      region,
+      workflows,
+      paths
+    } = environment.filestack.s3Config);
+
+    let path = paths.any;
     // get s3 path based on file type
-    if (environment.filestack.s3Config.paths[fileType]) {
-      path = environment.filestack.s3Config.paths[fileType];
+    if (paths[fileType]) {
+      path = paths[fileType];
     }
     // add user hash to the path
     path = path + this.storage.getUser().userHash + '/';
+    if (this.storage.getCountry() === 'China') {
+      container = environment.filestack.s3Config.containerChina;
+      region = environment.filestack.s3Config.regionChina;
+    }
     return {
-      location: environment.filestack.s3Config.location,
-      container: environment.filestack.s3Config.container,
-      region: environment.filestack.s3Config.region,
-      path: path
+      location,
+      container,
+      region,
+      path,
+      workflows
     };
   }
 
-  async previewFile(file) {
+  async previewFile(file): Promise<any> {
     let fileUrl = file.url;
     if (fileUrl) {
       if (fileUrl.indexOf('www.filepicker.io/api/file') !== -1) {
@@ -100,7 +119,15 @@ export class FilestackService {
       fileUrl = 'https://cdn.filestackcontent.com/preview/' + file.handle;
     }
 
-    const metadata = await this.metadata(file);
+    let metadata;
+    try {
+      metadata = await this.metadata(file);
+    } catch (e) {
+      return this.notificationService.alert({
+        subHeader: 'Inaccessible file',
+        message: 'The uploaded file is suspicious and being scanned for potential risk. Please try again later.',
+      });
+    }
 
     if (metadata.mimetype && metadata.mimetype.includes('application/')) {
       const megabyte = (metadata && metadata.size) ? metadata.size / 1000 / 1000 : 0;
@@ -133,16 +160,11 @@ export class FilestackService {
   }
 
   async metadata(file): Promise<Metadata> {
-    try {
-      const handle = file.url.match(/([A-Za-z0-9]){20,}/);
-      return this.httpClient.get(api.metadata.replace('HANDLE', handle[0])).toPromise();
-    } catch (e) {
-      console.log(`File url missing: ${JSON.stringify(e)}`);
-      throw e;
-    }
+    const handle = file.url.match(/([A-Za-z0-9]){20,}/);
+    return this.httpClient.get(api.metadata.replace('HANDLE', handle[0])).toPromise();
   }
 
-  async open(options = {}, onSuccess = res => res, onError = err => err) {
+  async open(options = {}, onSuccess = res => res, onError = err => err): Promise<any> {
     const pickerOptions: any = {
       dropPane: {},
       fromSources: [
@@ -159,13 +181,40 @@ export class FilestackService {
         return data;
       },
       onFileUploadFailed: onError,
-      onFileUploadFinished: onSuccess,
+      onFileUploadFinished: function(res) {
+        return onSuccess(res);
+      },
+      onUploadDone: (res) => res
     };
 
     return await this.filestack.picker(Object.assign(pickerOptions, options)).open();
   }
 
-  async previewModal(url, filestackUploadedResponse?) {
+  async upload(file, uploadOptions, path, uploadToken): Promise<any> {
+    const option = {
+      onProgress: uploadOptions.onProgress
+    };
+
+    if (!path) {
+      path = this.getS3Config(this.getFileTypes());
+    }
+
+    await this.filestack.upload(file, option, path, uploadToken)
+    .then(res => {
+      const missingAttribute = {
+        container: res.container,
+        key: res.key,
+        filename: res.filename,
+        mimetype: res.mimetype
+      };
+      return uploadOptions.onFileUploadFinished(Object.assign(res.toJSON(), missingAttribute));
+    })
+    .catch(err => {
+      return uploadOptions.onFileUploadFailed(err);
+    });
+  }
+
+  async previewModal(url, filestackUploadedResponse?): Promise<void> {
     const modal = await this.modalController.create({
       component: PreviewComponent,
       componentProps: {
@@ -174,5 +223,25 @@ export class FilestackService {
       }
     });
     return await modal.present();
+  }
+
+  async getWorkflowStatus(processedJobs = {}): Promise<any[]> {
+    const { policy, signature, workflows } = environment.filestack;
+    let jobs = {};
+
+    // currently we only accept virusDetection workflow
+    if (processedJobs && processedJobs[workflows.virusDetection]) {
+      jobs = processedJobs[workflows.virusDetection];
+    }
+
+    const request = [];
+    this.utils.each(jobs, job => {
+      request.push(this.httpClient.get(`https://cdn.filestackcontent.com/${environment.filestack.key}/security=p:${policy},s:${signature}/workflow_status=job_id:${job}`));
+    });
+    if (request.length > 0) {
+      return forkJoin(request).toPromise();
+    }
+
+    return [];
   }
 }
