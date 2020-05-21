@@ -9,7 +9,7 @@ export const environment = {
   env: 'sandbox',
   APIEndpoint: 'https://sandbox.practera.com/',
   graphQL: 'https://kixs5acl6j.execute-api.ap-southeast-2.amazonaws.com/sandbox/',
-  // APIEndpoint: 'http://127.0.0.1:8080/',
+  CRCPAPIEndpoint: 'http://localhost:3000/',
   // graphQL: 'http://127.0.0.1:8000/',
   intercomAppId: '',
   filestack: {

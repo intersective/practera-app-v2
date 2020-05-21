@@ -59,6 +59,10 @@ export class AuthLoginComponent implements OnInit {
     const nrLoginTracer = this.newRelic.createTracer('login request started', (message) => {
       this.newRelic.setCustomAttribute('login status', message);
     });
+    debugger;
+    this.authService.crcpLogin({email: this.loginForm.value.email}).subscribe(res => {
+      console.log('CRCP API called successfuly');
+    })
     return this.authService.login({
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
