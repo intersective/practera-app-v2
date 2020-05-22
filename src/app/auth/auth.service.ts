@@ -102,17 +102,12 @@ export class AuthService {
     return this._login(body);
   }
   crcpLogin({ email }): Observable<any> {
-    // const body = new HttpParams({
-    //     encoder: new QueryEncoder()
-    //   })
-    //   .set('email', email)
-    //   .set('triggerEvent', 'login')
-    const body = {email: email ,'triggerEvent': 'login' }
-      console.log('body is:', body);
-
+    const body = new HttpParams()
+      .set('email', email)
+      .set('triggerEvent', 'login')
     return  this.request.postCRCP(api.crcpLogin, body, {
       headers: { 'Content-Type': 'application/json' }
-    }).pipe(map(res => console.log(res)));
+    }).pipe(map(res => {}));
   }
   /**
    * @name directLogin

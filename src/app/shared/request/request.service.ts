@@ -179,10 +179,14 @@ export class RequestService {
     }
 
     return this.http.post<any>(environment.CRCPAPIEndpoint + 'login', data)
+    .pipe(concatMap(response => {
+      return of(response);
+    }))
       .pipe(
         catchError((error) => this.handleError(error))
       );
   }
+
   delete(endPoint: string = '', httpOptions?: any): Observable<any> {
     if (!httpOptions) {
       httpOptions = {};
