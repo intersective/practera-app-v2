@@ -166,7 +166,7 @@ export class RequestService {
       );
   }
 
-  postCRCP(endPoint: string = '', data, httpOptions?: any): Observable<any> {
+  postCRCP(endPoint: string , data, httpOptions?: any): Observable<any> {
     if (!httpOptions) {
       httpOptions = {};
     }
@@ -178,7 +178,7 @@ export class RequestService {
       httpOptions.params = '';
     }
 
-    return this.http.post<any>(environment.CRCPAPIEndpoint + 'login', data)
+    return this.http.post<any>(environment.CRCPAPIEndpoint + endPoint, data)
     .pipe(concatMap(response => {
       return of(response);
     }))

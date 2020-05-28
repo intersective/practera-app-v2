@@ -18,7 +18,8 @@ const api = {
     submissions: 'api/assessment_submissions.json',
     reviews: 'api/feedback_submissions.json',
     todoitem: 'api/v2/motivations/todo_item/edit.json'
-  }
+  },
+  team360: 'team360'
 };
 
 export interface AssessmentSubmitBody {
@@ -380,7 +381,6 @@ export class AssessmentService {
           };
         }
         return this.request.post(api.post.submissions, postData);
-
       case 'review':
         postData = {
           Assessment: assessment,
@@ -392,7 +392,7 @@ export class AssessmentService {
       success: false
     });
   }
-
+  
   saveFeedbackReviewed(submissionId) {
     const postData = {
       project_id: this.storage.getUser().projectId,
@@ -415,5 +415,20 @@ export class AssessmentService {
     }
     return reviewer.name !== this.storage.getUser().name ? reviewer.name : null;
   }
+ 
+  crcpTeam360(assessment: AssessmentSubmitBody, answers: object, submissionId?: number): Observable<any> {
+    let postData;
+        postData = {
+          Assessment: assessment,
+          AssessmentSubmissionAnswer: answers
+        };
+        if (submissionId) {
+          postData.AssessmentSubmission = {
+            id: submissionId
+          };
+        }
+        console.log('postData is:',postData);
+        return this.request.postCRCP(api.team360, postData);
 
+  }
 }

@@ -291,7 +291,7 @@ export class AssessmentComponent extends RouterEnter {
 
   private _handleReviewData(review) {
     this.review = review;
-    if (!review) {
+    if (!review && !this.doReview && this.action === 'review') {
       return this.notificationService.alert({
         message: 'There is no Assessment to review.',
         buttons: [
@@ -585,7 +585,14 @@ export class AssessmentComponent extends RouterEnter {
         message: 'Required question answer missing!'
       });
     }
-
+    
+    if ( this.assessment.type === 'team360') {
+      this.assessmentService.crcpTeam360(
+        assessment,
+        answers,
+        this.submissionId
+      ).subscribe(result => { console.log('successfully send')});
+    }
     // save the submission/feedback
     this.assessmentService.saveAnswers(
       assessment,
