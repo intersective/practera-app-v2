@@ -11,6 +11,9 @@ import { environment } from '@environments/environment';
 import { PusherService } from '@shared/pusher/pusher.service';
 import { NewRelicService } from '@shared/new-relic/new-relic.service';
 
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -132,6 +135,21 @@ export class AppComponent implements OnInit {
 
       // initialise Pusher
       await this.pusherService.initialise();
+    });
+
+    App.addListener('appUrlOpen', (data: any) => {
+      this.ngZone.run(() => {
+        console.log(data);
+        // Example url: https://beerswift.app/tabs/tab2
+        // slug = /tabs/tab2
+        const slug = data.url.split(".xyz").pop();
+        if (slug) {
+          this.router.navigateByUrl(slug);
+        }
+
+        // If no match, do nothing - let regular routing
+        // logic take over
+      });
     });
   }
 

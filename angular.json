@@ -29,6 +29,11 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/.well-known",
+                "output": ".well-known/"
               }
             ],
             "styles": [
@@ -92,7 +97,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
-            }, 
+            },
             "us": {
               "fileReplacements": [
                 {
@@ -113,7 +118,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
-            },                       
+            },
             "stage": {
               "fileReplacements": [
                 {
