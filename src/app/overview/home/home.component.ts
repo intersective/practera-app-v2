@@ -44,7 +44,7 @@ export class HomeComponent implements OnDestroy, OnInit {
   loadingAchievements = true;
 
   constructor(
-    private intercom: Intercom,
+    public intercom: Intercom,
     public router: Router,
     private homeService: HomeService,
     public utils: UtilsService,
@@ -176,6 +176,8 @@ export class HomeComponent implements OnDestroy, OnInit {
         name: this.storage.getUser().name, // Full name
         email: this.storage.getUser().email, // Email address
         user_id: this.storage.getUser().id, // current_user_id
+        hide_default_launcher: true,
+        custom_launcher_selector: '#intercom-button',
         // Supports all optional configuration.
         widget: {
           'activator': '#intercom'

@@ -476,3 +476,9 @@ for videos in topics
     transform: translate(-50%, -50%);
   }
 }
+
+ion-fab-button {
+  &.intercom-fab-button {
+    --background: #6A3DE0;
+  }
+}

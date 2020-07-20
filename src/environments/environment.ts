@@ -11,7 +11,7 @@ export const environment = {
   graphQL: 'https://kixs5acl6j.execute-api.ap-southeast-2.amazonaws.com/sandbox/',
   // APIEndpoint: 'http://127.0.0.1:8080/',
   // graphQL: 'http://127.0.0.1:8000/',
-  intercomAppId: '',
+  intercomAppId: 'pef1lmo8',
   filestack: {
     key: 'AO6F4C72uTPGRywaEijdLz',
     s3Config: {
@@ -36,7 +36,7 @@ export const environment = {
     },
   },
   defaultCountryModel: 'AUS',
-  intercom: false,
+  intercom: true,
   goMobile: false,
 };
 

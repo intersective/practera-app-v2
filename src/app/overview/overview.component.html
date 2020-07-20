@@ -16,11 +16,22 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button id="intercom-button" class="intercom-fab-button" mode="ios">
+        <ion-icon name="help-circle"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ng-container>
 </ion-content>
 <ng-template #singlePage>
   <ion-content appFloat isActivityCard="true">
     <app-home [refresh]="initiator$"></app-home>
     <app-project [refresh]="initiator$"></app-project>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button id="intercom-button" class="intercom-fab-button" mode="ios">
+        <ion-icon name="help-circle"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-content>
 </ng-template>

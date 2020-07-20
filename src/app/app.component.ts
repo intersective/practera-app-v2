@@ -10,6 +10,7 @@ import { VersionCheckService } from '@services/version-check.service';
 import { environment } from '@environments/environment';
 import { PusherService } from '@shared/pusher/pusher.service';
 import { NewRelicService } from '@shared/new-relic/new-relic.service';
+// import { Intercom } from 'ng-intercom';
 
 @Component({
   selector: 'app-root',
@@ -26,11 +27,13 @@ export class AppComponent implements OnInit {
     private versionCheckService: VersionCheckService,
     private pusherService: PusherService,
     private ngZone: NgZone,
-    private newRelic: NewRelicService
+    private newRelic: NewRelicService,
+    // public intercom: Intercom
     // private splashScreen: SplashScreen,
     // private statusBar: StatusBar
   ) {
     this.initializeApp();
+    // this.initializeIntercom();
   }
 
   // force every navigation happen under radar of angular
@@ -135,5 +138,22 @@ export class AppComponent implements OnInit {
       await this.pusherService.initialise();
     });
   }
+
+  // initializeIntercom() {
+  //   if (typeof environment.intercom !== 'undefined' && environment.intercom === true) {
+  //     this.intercom.boot({
+  //       app_id: environment.intercomAppId,
+  //       name: this.storage.getUser().name, // Full name
+  //       email: this.storage.getUser().email, // Email address
+  //       user_id: this.storage.getUser().id, // current_user_id
+  //       hide_default_launcher: true,
+  //       custom_launcher_selector: '.intercom-fab-button',
+  //       // Supports all optional configuration.
+  //       widget: {
+  //         'activator': '#intercom'
+  //       }
+  //     });
+  //   }
+  // }
 
 }

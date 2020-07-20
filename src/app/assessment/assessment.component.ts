@@ -12,6 +12,8 @@ import { FastFeedbackService } from '../fast-feedback/fast-feedback.service';
 import { interval, timer, Subscription } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { NewRelicService } from '@shared/new-relic/new-relic.service';
+import { environment } from '@environments/environment';
+import { Intercom } from 'ng-intercom';
 
 const SAVE_PROGRESS_TIMEOUT = 10000;
 
@@ -101,6 +103,7 @@ export class AssessmentComponent extends RouterEnter {
     private fastFeedbackService: FastFeedbackService,
     private ngZone: NgZone,
     private newRelic: NewRelicService,
+    private intercom: Intercom,
   ) {
     super(router);
   }
@@ -251,6 +254,15 @@ export class AssessmentComponent extends RouterEnter {
           this.newRelic.noticeError(error);
         }
       );
+
+    if (typeof environment.intercom !== 'undefined' && environment.intercom === true) {
+        this.intercom.update({
+          user_id: this.storage.getUser().id, // current_user_id
+          hide_default_launcher: true,
+          custom_launcher_selector: '#intercom-button',
+          apples: 2
+        });
+      }
   }
 
   private _handleSubmissionData(submission) {
