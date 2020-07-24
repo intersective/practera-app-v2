@@ -2855,23 +2855,6 @@
                     }
                 },
                 {
-                    "source": "/Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams-auth/android/build/intermediates/packaged_res/debug/values/values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "58",
-                        "endOffsets": "109"
-                    },
-                    "to": {
-                        "startLines": "752",
-                        "startColumns": "4",
-                        "startOffsets": "54608",
-                        "endColumns": "58",
-                        "endOffsets": "54662"
-                    }
-                },
-                {
                     "source": "/Users/chaw/.gradle/caches/transforms-2/files-2.1/f720b24cc490c109d50c0a0a1e6bf186/play-services-basement-17.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "4,7",
@@ -3066,6 +3049,23 @@
                         "endLines": "24,4270,5515,5604",
                         "endColumns": "60,12,24,24",
                         "endOffsets": "1334,287846,356205,361416"
+                    }
+                },
+                {
+                    "source": "/Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams/android/build/intermediates/packaged_res/debug/values/values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
+                    },
+                    "to": {
+                        "startLines": "752",
+                        "startColumns": "4",
+                        "startOffsets": "54608",
+                        "endColumns": "58",
+                        "endOffsets": "54662"
                     }
                 },
                 {

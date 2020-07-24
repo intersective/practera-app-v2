@@ -10,7 +10,8 @@ import { FastFeedbackService } from '../fast-feedback/fast-feedback.service';
 import { FilestackService } from '@shared/filestack/filestack.service';
 import { NewRelicService } from '@shared/new-relic/new-relic.service';
 import { Plugins } from '@capacitor/core';
-const { CapacitorPusherBeamsAuth } = Plugins;
+const { CapacitorPusherBeamsAuth, PusherBeams } = Plugins;
+
 
 @Component({
   selector: 'app-settings',
@@ -170,4 +171,35 @@ export class SettingsComponent extends RouterEnter {
     }
   }
 
+  async getSubscribedInterests() {
+    const interests = await PusherBeams.getDeviceInterests();
+    console.log('interests::', interests);
+    return interests;
+  }
+
+  async subscribeInterest(text) {
+    PusherBeams.echo({value: text});
+    PusherBeams.addDeviceInterest({interest: text});
+    await this.getSubscribedInterests();
+    // const setChaw = await PusherBeams.setUserID({ userID: 'chaw' });
+    // console.log('setUserID::', setChaw);
+  }
+
+  async unsubscribeInterest(text) {
+    const s = await PusherBeams.removeDeviceInterest({interest: text});
+    console.log('unsubscribeInterest::', s);
+    await this.getSubscribedInterests();
+  }
+
+  async clearDeviceInterests() {
+    const s = await PusherBeams.clearDeviceInterests();
+    console.log('clearDeviceInterests::', s);
+    await this.getSubscribedInterests();
+  }
+
+  async clearAllPusherState() {
+    const s = await PusherBeams.clearAllState();
+    console.log('clearAllPusherState::', s);
+    await this.getSubscribedInterests();
+  }
 }

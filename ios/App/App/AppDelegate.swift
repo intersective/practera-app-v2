@@ -1,4 +1,7 @@
 import Firebase
+import FirebaseCore
+import FirebaseInstanceID
+import FirebaseMessaging
 import UIKit
 import Capacitor
 import PushNotifications
@@ -9,13 +12,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   let beamsClient = PushNotifications.shared
 
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    FirebaseApp.configure()
     self.beamsClient.start(instanceId: "f5df7283-144c-458c-ac23-622b2d47eed9")
     self.beamsClient.registerForRemoteNotifications()
-    try? self.beamsClient.addDeviceInterest(interest: "hello")
+    try? self.beamsClient.addDeviceInterest(interest: "general")
+    
+    FirebaseApp.configure()
+    
+    if launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] != nil {
+      // The app was launched by the user tapping a notification
+      print("activated by pressing remote notification")
+    }
     return true
   }
 
@@ -46,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // but if you want the App API to support tracking app url opens, make sure to keep this call
     return CAPBridge.handleOpenUrl(url, options)
   }
-
+  
   func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     // Called when the app was launched with an activity, including Universal Links.
     // Feel free to add additional processing here, but if you want the App API to support
@@ -71,23 +79,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.beamsClient.registerDeviceToken(deviceToken)
     Messaging.messaging().apnsToken = deviceToken
     InstanceID.instanceID().instanceID { (result, error) in
-      if let error = error {
-        NotificationCenter.default.post(name: Notification.Name(CAPNotifications.DidFailToRegisterForRemoteNotificationsWithError.name()), object: error)
-      } else if let result = result {
-        NotificationCenter.default.post(name: Notification.Name(CAPNotifications.DidRegisterForRemoteNotificationsWithDeviceToken.name()), object: result.token)
-      }
+        if let error = error {
+            NotificationCenter.default.post(name: Notification.Name(CAPNotifications.DidFailToRegisterForRemoteNotificationsWithError.name()), object: error)
+        } else if let result = result {
+            NotificationCenter.default.post(name: Notification.Name(CAPNotifications.DidRegisterForRemoteNotificationsWithDeviceToken.name()), object: result.token)
+        }
     }
+    
+    NotificationCenter.default.post(name: Notification.Name(CAPNotifications.DidRegisterForRemoteNotificationsWithDeviceToken.name()), object: deviceToken)
   }
 
   func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
     NotificationCenter.default.post(name: Notification.Name(CAPNotifications.DidFailToRegisterForRemoteNotificationsWithError.name()), object: error)
+    print("Remote notification support is unavailable due to error: \(error.localizedDescription)")
   }
-
+    
   func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//    self.beamsClient.handleNotification(userInfo: userInfo)
+    
+    let remoteNotificationType = self.beamsClient.handleNotification(userInfo: userInfo)
+    if remoteNotificationType == .ShouldIgnore {
+      return // This was an internal-only notification from Pusher.
+    }
     print(userInfo)
   }
-  
-  #endif
+
+#endif
 
 }
 
