@@ -60,12 +60,20 @@ Run `npm run local` to start a development server on your local, and calling 127
 
 #### Capacitor
 
+Toolsets:
+- Capacitor: v2.0
+- Regression Testing (Appium + Protractor + Cucumber)
+- XCode
+- Android Studio
+- Cocapods: 1.9.1
+- Active Apple Developer Program account
+
 On **[feature/AV2-625/capacitor](https://github.com/intersective/practera-app-v2/tree/feature/AV2-625/capacitor)** branch, run `npm install` to make sure you have capacitor cli and its dependencies installed.
 
 - Please refer to **capacitor.config.json** for capacitor's build configuration.
 - After development, please run commands below to update capacitor with latest changes.
   - `npm run build` - ensure build is latest version 
-  - `npx cap copy`  - sync ionic app with Capacitor
+  - `npx cap sync`  - sync ionic app with Capacitor
 
 ##### iOS
 
@@ -75,6 +83,17 @@ On **[feature/AV2-625/capacitor](https://github.com/intersective/practera-app-v2
 
 - iOS code is located inside `./ios`
 
+###### Testflight Build
+
+Creating a testflight build can only be done through xcode.
+The prerequisites are:
+- App Store distribution certificate
+- [Register test device](https://developer.apple.com/account/resources/devices/list) for development purpose
+- Profiles 
+  - Distribution (for publishing app to testflight)
+  - Development (for Adhoc or running the app locally on your test physical device)
+- Access to/Installation of Apple Developer's certificates and profiles are private key protected, please ask for the private keys from previous Developer who created the key.
+
 ##### android
 
 - Requirements:
@@ -82,6 +101,18 @@ On **[feature/AV2-625/capacitor](https://github.com/intersective/practera-app-v2
 
 - android code is located inside `./android` 
 
+##### Native Push Notification (Hybrid AppV2)
+
+- require `google-services.json` (obtain from Firebase Cloud Messaging service)
+- register a [Firebase account](https://firebase.google.com)
+- for iOS, we need [APNs key](https://developer.apple.com/account/resources/authkeys/list) from Apple Developer Program (Paid account), and integrate it into Firebase Cloud Messaging setting (follow their instruction when creating `google-services.json` mentioned above)
+
+###### Pusher Beams
+
+We're using Pusher Beams API to handle sending push notification for us. To setup, we need both Firebase (android) and APNs (iOS) keys integrated into this Beams service. Getting start by refering to their straightforward [documentation](https://pusher.com/docs/beams#documentation).
+
+- Integration of Pusher Beams is alternative solution to Firebase.
+- With Beams integrated, Firebase SDK integration is no needed. For example, `google-services.json` mentioned above is not necessary.
 
 
 ## External link format
