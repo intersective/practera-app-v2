@@ -483,11 +483,9 @@ var HomeComponent = /** @class */ (function () {
                     case 0: return [4 /*yield*/, CapacitorPusherBeamsAuth.openWebVersion({ anything: 'anything here!!!' })];
                     case 1:
                         s = _a.sent();
-                        console.log('s::', s);
-                        return [4 /*yield*/, CapacitorPusherBeamsAuth.onlyAndroid({ value: 'testing for android!' })];
+                        return [4 /*yield*/, CapacitorPusherBeamsAuth.onlyAndroid({ value: 'Test CapacitorPusherBeamsAuth.onlyAndroid' })];
                     case 2:
                         android = _a.sent();
-                        console.log('android::::', android);
                         return [4 /*yield*/, CapacitorPusherBeamsAuth.openMap({
                                 latitude: 123123,
                                 longitude: 321321,

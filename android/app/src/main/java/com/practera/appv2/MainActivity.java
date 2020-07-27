@@ -20,6 +20,7 @@ public class MainActivity extends BridgeActivity {
     this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
       // Additional plugins you've installed go here
       // Ex: add(TotallyAwesomePlugin.class);
+      // FirebaseApp.initializeApp(this);
       PushNotifications.start(getApplicationContext(), "f5df7283-144c-458c-ac23-622b2d47eed9");
       PushNotifications.addDeviceInterest("general");
       add(CapacitorPusherBeamsAuth.class);
