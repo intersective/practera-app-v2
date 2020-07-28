@@ -10,7 +10,8 @@
       }
     },
     "data": {
-      "custom": "data - from chaw"
+      "custom": "data - from chaw",
+      "customMessage": "random message - iOS"
     }
   },
   "fcm": {
@@ -19,6 +20,7 @@
       "body": "testing-interest test"
     },
     "data": {
+      "customMessage": "random message - android",
       "inAppNotificationMessage": "Display me somewhere in the app ui!",
       "actions": [
         {

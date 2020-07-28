@@ -15,7 +15,7 @@ ADDED from /Users/chaw/Workspaces/www/intersective/practera-app-v2/android/app/s
 INJECTED from /Users/chaw/Workspaces/www/intersective/practera-app-v2/android/app/src/main/AndroidManifest.xml:2:1-63:12
 INJECTED from /Users/chaw/Workspaces/www/intersective/practera-app-v2/android/app/src/main/AndroidManifest.xml:2:1-63:12
 INJECTED from /Users/chaw/Workspaces/www/intersective/practera-app-v2/android/app/src/main/AndroidManifest.xml:2:1-63:12
-MERGED from [:cesarbarone-capacitor-pusher-beams] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/@cesarbarone/capacitor-pusher-beams/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:capacitor-pusher-beams] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:capacitor-pusher-beams-auth] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams-auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:capacitor-android] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/@capacitor/android/capacitor/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-36:12
 MERGED from [com.google.android.material:material:1.1.0-rc02] /Users/chaw/.gradle/caches/transforms-2/files-2.1/051eaa9027caada5026e12dfeac8bc27/material-1.1.0-rc02/AndroidManifest.xml:17:1-24:12
@@ -301,8 +301,8 @@ uses-sdk
 INJECTED from /Users/chaw/Workspaces/www/intersective/practera-app-v2/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/chaw/Workspaces/www/intersective/practera-app-v2/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/chaw/Workspaces/www/intersective/practera-app-v2/android/app/src/main/AndroidManifest.xml
-MERGED from [:cesarbarone-capacitor-pusher-beams] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/@cesarbarone/capacitor-pusher-beams/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:cesarbarone-capacitor-pusher-beams] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/@cesarbarone/capacitor-pusher-beams/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:capacitor-pusher-beams] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:capacitor-pusher-beams] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:capacitor-pusher-beams-auth] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams-auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:capacitor-pusher-beams-auth] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/capacitor-pusher-beams-auth/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:capacitor-android] /Users/chaw/Workspaces/www/intersective/practera-app-v2/node_modules/@capacitor/android/capacitor/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41

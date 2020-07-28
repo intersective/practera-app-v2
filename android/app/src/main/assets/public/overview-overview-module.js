@@ -1501,7 +1501,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_storage_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @services/storage.service */ "./src/app/services/storage.service.ts");
 /* harmony import */ var _services_utils_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @services/utils.service */ "./src/app/services/utils.service.ts");
 /* harmony import */ var _fast_feedback_fast_feedback_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../fast-feedback/fast-feedback.service */ "./src/app/fast-feedback/fast-feedback.service.ts");
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
+/* harmony import */ var _shared_notification_notification_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @shared/notification/notification.service */ "./src/app/shared/notification/notification.service.ts");
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @capacitor/core */ "./node_modules/@capacitor/core/dist/esm/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1520,13 +1521,15 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-var PushNotifications = _capacitor_core__WEBPACK_IMPORTED_MODULE_5__["Plugins"].PushNotifications;
+
+var PushNotifications = _capacitor_core__WEBPACK_IMPORTED_MODULE_6__["Plugins"].PushNotifications;
 var OverviewComponent = /** @class */ (function () {
-    function OverviewComponent(storage, utils, route, fastFeedbackService) {
+    function OverviewComponent(storage, utils, route, fastFeedbackService, notificationService) {
         this.storage = storage;
         this.utils = utils;
         this.route = route;
         this.fastFeedbackService = fastFeedbackService;
+        this.notificationService = notificationService;
         this.initiator$ = this.route.params;
         this.isMobile = this.utils.isMobile();
     }
@@ -1547,6 +1550,7 @@ var OverviewComponent = /** @class */ (function () {
             }
             else {
                 // Show some error
+                console.log('requestpermissions::error::', result);
             }
         });
         PushNotifications.addListener('registration', function (token) {
@@ -1557,16 +1561,38 @@ var OverviewComponent = /** @class */ (function () {
         });
         PushNotifications.addListener('pushNotificationReceived', function (notification) {
             console.log('Push received: ' + JSON.stringify(notification));
+            _this.storage.set('pn-test', notification);
+            _this.notificationService.alert({
+                header: 'pushNotificationReceived',
+                message: JSON.stringify(notification),
+                buttons: [{
+                        text: 'OK',
+                        role: 'close'
+                    }]
+            });
         });
-        PushNotifications.addListener('pushNotificationActionPerformed', function (notification) {
-            console.log('Push action performed: ' + JSON.stringify(notification));
+        PushNotifications.addListener('pushNotificationActionPerformed', function (pusherNotification) {
+            var notification = pusherNotification.notification;
+            console.log(notification);
+            var data = notification.data;
+            console.log('Push action performed: ' + JSON.stringify(data));
+            _this.storage.set('pn-test-actioned', data);
+            _this.notificationService.alert({
+                header: 'pushNotificationActionPerformed',
+                message: JSON.stringify(data.customMessage || data),
+                buttons: [{
+                        text: 'OK',
+                        role: 'close'
+                    }]
+            });
         });
     };
     OverviewComponent.ctorParameters = function () { return [
         { type: _services_storage_service__WEBPACK_IMPORTED_MODULE_2__["BrowserStorageService"] },
         { type: _services_utils_service__WEBPACK_IMPORTED_MODULE_3__["UtilsService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] },
-        { type: _fast_feedback_fast_feedback_service__WEBPACK_IMPORTED_MODULE_4__["FastFeedbackService"] }
+        { type: _fast_feedback_fast_feedback_service__WEBPACK_IMPORTED_MODULE_4__["FastFeedbackService"] },
+        { type: _shared_notification_notification_service__WEBPACK_IMPORTED_MODULE_5__["NotificationService"] }
     ]; };
     OverviewComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1577,7 +1603,8 @@ var OverviewComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_storage_service__WEBPACK_IMPORTED_MODULE_2__["BrowserStorageService"],
             _services_utils_service__WEBPACK_IMPORTED_MODULE_3__["UtilsService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
-            _fast_feedback_fast_feedback_service__WEBPACK_IMPORTED_MODULE_4__["FastFeedbackService"]])
+            _fast_feedback_fast_feedback_service__WEBPACK_IMPORTED_MODULE_4__["FastFeedbackService"],
+            _shared_notification_notification_service__WEBPACK_IMPORTED_MODULE_5__["NotificationService"]])
     ], OverviewComponent);
     return OverviewComponent;
 }());

@@ -4,6 +4,7 @@ import { BrowserStorageService } from '@services/storage.service';
 import { UtilsService } from '@services/utils.service';
 import { combineLatest, Observable, of } from 'rxjs';
 import { FastFeedbackService } from '../fast-feedback/fast-feedback.service';
+import { NotificationService } from '@shared/notification/notification.service';
 
 import {
   Plugins,
@@ -28,6 +29,7 @@ export class OverviewComponent implements OnInit {
     private utils: UtilsService,
     private route: ActivatedRoute,
     private fastFeedbackService: FastFeedbackService,
+    private notificationService: NotificationService
   ) {
     this.isMobile = this.utils.isMobile();
   }
@@ -49,6 +51,7 @@ export class OverviewComponent implements OnInit {
         PushNotifications.register();
       } else {
         // Show some error
+        console.log('requestpermissions::error::', result);
       }
     });
 
@@ -67,12 +70,37 @@ export class OverviewComponent implements OnInit {
     PushNotifications.addListener('pushNotificationReceived',
                                   (notification: PushNotification) => {
         console.log('Push received: ' + JSON.stringify(notification));
+        this.storage.set('pn-test', notification);
+        this.notificationService.alert({
+          header: 'pushNotificationReceived',
+          message: JSON.stringify(notification),
+          buttons: [{
+            text: 'OK',
+            role: 'close'
+          }]
+        });
       }
     );
 
     PushNotifications.addListener('pushNotificationActionPerformed',
-                                  (notification: PushNotificationActionPerformed) => {
-        console.log('Push action performed: ' + JSON.stringify(notification));
+                                  (pusherNotification: PushNotificationActionPerformed) => {
+
+        const { notification } = pusherNotification;
+        console.log(notification);
+
+        const { data } = notification;
+        console.log('Push action performed: ' + JSON.stringify(data));
+
+        this.storage.set('pn-test-actioned', data);
+
+        this.notificationService.alert({
+          header: 'pushNotificationActionPerformed',
+          message: JSON.stringify(data.customMessage || data),
+          buttons: [{
+            text: 'OK',
+            role: 'close'
+          }]
+        });
       }
     );
   }
