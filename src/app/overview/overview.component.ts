@@ -88,11 +88,14 @@ export class OverviewComponent implements OnInit {
         const { notification } = pusherNotification;
         console.log(notification);
 
-        const { data } = notification;
+        let { data } = notification;
         console.log('Push action performed: ' + JSON.stringify(data));
 
         this.storage.set('pn-test-actioned', data);
 
+        if (data.data) {
+          data = data.data;
+        }
         this.notificationService.alert({
           header: 'pushNotificationActionPerformed',
           message: JSON.stringify(data.customMessage || data),

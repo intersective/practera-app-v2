@@ -1561,7 +1561,6 @@ var OverviewComponent = /** @class */ (function () {
         });
         PushNotifications.addListener('pushNotificationReceived', function (notification) {
             console.log('Push received: ' + JSON.stringify(notification));
-            alert('PUSH RECEIVED');
             _this.storage.set('pn-test', notification);
             _this.notificationService.alert({
                 header: 'pushNotificationReceived',
@@ -1572,12 +1571,18 @@ var OverviewComponent = /** @class */ (function () {
                     }]
             });
         });
-        PushNotifications.addListener('pushNotificationActionPerformed', function (notification) {
-            console.log('Push action performed: ' + JSON.stringify(notification));
-            _this.storage.set('pn-test-actioned', notification);
+        PushNotifications.addListener('pushNotificationActionPerformed', function (pusherNotification) {
+            var notification = pusherNotification.notification;
+            console.log(notification);
+            var data = notification.data;
+            console.log('Push action performed: ' + JSON.stringify(data));
+            _this.storage.set('pn-test-actioned', data);
+            if (data.data) {
+                data = data.data;
+            }
             _this.notificationService.alert({
                 header: 'pushNotificationActionPerformed',
-                message: JSON.stringify(notification),
+                message: JSON.stringify(data.customMessage || data),
                 buttons: [{
                         text: 'OK',
                         role: 'close'

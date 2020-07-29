@@ -1577,6 +1577,9 @@ var OverviewComponent = /** @class */ (function () {
             var data = notification.data;
             console.log('Push action performed: ' + JSON.stringify(data));
             _this.storage.set('pn-test-actioned', data);
+            if (data.data) {
+                data = data.data;
+            }
             _this.notificationService.alert({
                 header: 'pushNotificationActionPerformed',
                 message: JSON.stringify(data.customMessage || data),
