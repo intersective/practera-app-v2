@@ -1,6 +1,8 @@
 {
   "interests": [
-    "hello"
+    "hello",
+    "general",
+    "test-channel"
   ],
   "apns": {
     "aps": {
