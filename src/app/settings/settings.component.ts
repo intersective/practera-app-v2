@@ -125,8 +125,15 @@ export class SettingsComponent extends RouterEnter {
     this.associated = associated;
   }
 
-  logout() {
-    return this.authService.logout();
+  // unsubscribe native process from Beams server
+  private clearPushNotificationSub() {
+    return this.pushNotificationService.stop();
+  }
+
+  async logout() {
+    await this.authService.logout();
+    await this.clearPushNotificationSub();
+    return;
   }
 
   async uploadProfileImage(file, type = null) {

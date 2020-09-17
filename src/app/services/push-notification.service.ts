@@ -92,12 +92,15 @@ export class PushNotificationService {
    */
   async associateDeviceToUser(userID, token) {
     const linkedUser = await PusherBeams.setUserID({
-      userID,
       headers: {
         appkey: environment.appkey,
         apikey: token,
+        'Accept': 'application/json',
+        // 'user_id': userID,
       },
-      beamsAuthURL: 'https://wchpiwp904.execute-api.us-east-2.amazonaws.com/beams'
+      // beamsAuthURL: 'https://us-central1-trt-83c80.cloudfunctions.net/beams'
+      beamsAuthURL: 'https://xgfmlhaw5k.execute-api.ap-southeast-2.amazonaws.com/beams'
+      // beamsAuthURL: 'https://wchpiwp904.execute-api.us-east-2.amazonaws.com/beams'
     });
     return linkedUser;
   }
@@ -132,6 +135,10 @@ export class PushNotificationService {
 
   clearPusherBeams() {
     return PusherBeams.clearAllState();
+  }
+
+  stop() {
+    return PusherBeams.stop();
   }
 
   // temporary place this function here (as it's part of the capacitor plugin)
