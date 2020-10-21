@@ -24,13 +24,13 @@
 <title>cluster_EventDetailModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 506,-268 506,-70 8,-70"/>
 </g>
-<g id="clust7" class="cluster">
-<title>cluster_EventDetailModule_providers</title>
-<polygon fill="none" stroke="black" points="310,-78 310,-130 498,-130 498,-78 310,-78"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_EventDetailModule_exports</title>
 <polygon fill="none" stroke="black" points="161,-208 161,-260 329,-260 329,-208 161,-208"/>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_EventDetailModule_providers</title>
+<polygon fill="none" stroke="black" points="310,-78 310,-130 498,-130 498,-78 310,-78"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_EventDetailModule_imports</title>
