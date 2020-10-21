@@ -130,7 +130,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#channelUuid">channelUuid</a>
+                                <a href="#channelId">channelId</a>
                             </li>
                             <li>
                                 <a href="#content">content</a>
@@ -149,7 +149,7 @@
                                 <a href="#messageList">messageList</a>
                             </li>
                             <li>
-                                <a href="#messagePageCursor">messagePageCursor</a>
+                                <a href="#messagePageNumber">messagePageNumber</a>
                             </li>
                             <li>
                                 <a href="#messagePageSize">messagePageSize</a>
@@ -157,9 +157,6 @@
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#pusherService">pusherService</a>
-                            </li>
-                            <li>
-                                <a href="#receivedMessage">receivedMessage</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -248,7 +245,7 @@
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#_subscribeToTypingEvent">_subscribeToTypingEvent</a>
+                                <a href="#_subscribeToPusherChannel">_subscribeToPusherChannel</a>
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
@@ -355,7 +352,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -532,15 +529,14 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-    uuid: &#x27;&#x27;,
-    name: &#x27;&#x27;,
-    avatar: &#x27;&#x27;,
-    pusherChannel: &#x27;&#x27;,
-    isAnnouncement: false,
-    isDirectMessage: false,
+    channelId: 0,
+    channelName: &#x27;&#x27;,
+    channelAvatar: &#x27;&#x27;,
+    pusherChannelName: &#x27;&#x27;,
     readonly: false,
     roles: [],
-    unreadMessageCount: 0,
+    members: [],
+    unreadMessages: 0,
     lastMessage: &#x27;&#x27;,
     lastMessageCreated: &#x27;&#x27;
   }</code>
@@ -586,8 +582,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="261"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:261</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="245"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:245</a></div>
                 </td>
             </tr>
 
@@ -627,8 +623,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="254"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:254</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="238"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:238</a></div>
                 </td>
             </tr>
 
@@ -674,8 +670,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="413"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:413</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="383"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:383</a></div>
                 </td>
             </tr>
 
@@ -753,8 +749,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:99</a></div>
                 </td>
             </tr>
 
@@ -794,8 +790,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="145"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:149</a></div>
                 </td>
             </tr>
 
@@ -835,8 +831,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="289"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:289</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="259"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:259</a></div>
                 </td>
             </tr>
 
@@ -876,8 +872,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="494"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:494</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="464"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:464</a></div>
                 </td>
             </tr>
 
@@ -944,8 +940,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="451"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:451</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="421"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:421</a></div>
                 </td>
             </tr>
 
@@ -985,8 +981,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="436"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:436</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="406"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:406</a></div>
                 </td>
             </tr>
 
@@ -1033,28 +1029,28 @@ we will insert type message to cost variable befoer clear it so type message wil
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="_subscribeToTypingEvent"></a>
+                    <a name="_subscribeToPusherChannel"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Private</span>
-                            _subscribeToTypingEvent
+                            _subscribeToPusherChannel
                         </b>
-                        <a href="#_subscribeToTypingEvent"><span class="icon ion-ios-link"></span></a>
+                        <a href="#_subscribeToPusherChannel"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>_subscribeToTypingEvent()</code>
+                    <code>_subscribeToPusherChannel()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:110</a></div>
                 </td>
             </tr>
 
@@ -1094,8 +1090,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="472"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:472</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="442"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:442</a></div>
                 </td>
             </tr>
 
@@ -1166,8 +1162,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="455"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:455</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="425"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:425</a></div>
                 </td>
             </tr>
 
@@ -1232,8 +1228,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="209"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:209</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:199</a></div>
                 </td>
             </tr>
 
@@ -1271,8 +1267,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="388"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:388</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="358"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:358</a></div>
                 </td>
             </tr>
 
@@ -1339,8 +1335,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="646"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:646</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="616"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:616</a></div>
                 </td>
             </tr>
 
@@ -1423,8 +1419,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="325"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:325</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="295"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:295</a></div>
                 </td>
             </tr>
 
@@ -1506,8 +1502,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="374"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:374</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="344"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:344</a></div>
                 </td>
             </tr>
 
@@ -1576,8 +1572,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="581"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:581</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="551"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:551</a></div>
                 </td>
             </tr>
 
@@ -1646,8 +1642,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="309"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:309</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="279"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:279</a></div>
                 </td>
             </tr>
 
@@ -1712,8 +1708,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="119"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:119</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:134</a></div>
                 </td>
             </tr>
 
@@ -1746,7 +1742,7 @@ we will insert type message to cost variable befoer clear it so type message wil
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="../interfaces/Message.html" target="_self" >Message</a></code>
 
                     </div>
                     <div class="io-description">
@@ -1780,8 +1776,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="524"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:524</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="494"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:494</a></div>
                 </td>
             </tr>
 
@@ -1850,8 +1846,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="336"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:336</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="306"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:306</a></div>
                 </td>
             </tr>
 
@@ -1918,8 +1914,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="202"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:202</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:192</a></div>
                 </td>
             </tr>
 
@@ -1984,8 +1980,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:92</a></div>
                 </td>
             </tr>
 
@@ -2025,8 +2021,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="631"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:631</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="601"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:601</a></div>
                 </td>
             </tr>
 
@@ -2091,8 +2087,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="490"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:490</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="460"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:460</a></div>
                 </td>
             </tr>
 
@@ -2157,8 +2153,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="213"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:213</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="203"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:203</a></div>
                 </td>
             </tr>
 
@@ -2196,8 +2192,8 @@ we will insert type message to cost variable befoer clear it so type message wil
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="426"
-                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:426</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="396"
+                            class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:396</a></div>
                 </td>
             </tr>
 
@@ -2384,23 +2380,23 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="channelUuid"></a>
+                        <a name="channelId"></a>
                         <span class="name">
                             <b>
-                            channelUuid</b>
-                            <a href="#channelUuid"><span class="icon ion-ios-link"></span></a>
+                            channelId</b>
+                            <a href="#channelId"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <i>Type : </i>    <code>number | string</code>
 
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -2464,7 +2460,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -2490,7 +2486,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:41</a></div>
                             </td>
                         </tr>
 
@@ -2517,7 +2513,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -2549,7 +2545,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -2560,28 +2556,28 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="messagePageCursor"></a>
+                        <a name="messagePageNumber"></a>
                         <span class="name">
                             <b>
-                            messagePageCursor</b>
-                            <a href="#messagePageCursor"><span class="icon ion-ios-link"></span></a>
+                            messagePageNumber</b>
+                            <a href="#messagePageNumber"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                            <i>Default value : </i><code>0</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -2613,7 +2609,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -2641,34 +2637,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:57</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="receivedMessage"></a>
-                        <span class="name">
-                            <b>
-                            receivedMessage</b>
-                            <a href="#receivedMessage"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/Message.html" target="_self" >Message</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -2696,7 +2665,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -2728,7 +2697,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -2754,7 +2723,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -2780,7 +2749,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -2808,7 +2777,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -2836,7 +2805,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -2863,7 +2832,7 @@ URL: &lt;code&gt;/bad-url&lt;/code&gt;&lt;/li&gt;
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/chat/chat-room/chat-room.component.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -3026,7 +2995,7 @@ import { RouterEnter } from &#x27;@services/router-enter.service&#x27;;
 import { UtilsService } from &#x27;@services/utils.service&#x27;;
 import { PusherService } from &#x27;@shared/pusher/pusher.service&#x27;;
 import { FilestackService } from &#x27;@shared/filestack/filestack.service&#x27;;
-import { ChatService, ChatChannel, Message, MessageListResult, ChannelMembers } from &#x27;../chat.service&#x27;;
+import { ChatService, ChatChannel, Message } from &#x27;../chat.service&#x27;;
 import { ChatPreviewComponent } from &#x27;../chat-preview/chat-preview.component&#x27;;
 import { NewRelicService } from &#x27;@shared/new-relic/new-relic.service&#x27;;
 
@@ -3038,26 +3007,25 @@ import { NewRelicService } from &#x27;@shared/new-relic/new-relic.service&#x27;;
 export class ChatRoomComponent extends RouterEnter {
   @ViewChild(IonContent) content: IonContent;
   @Input() chatChannel?: ChatChannel &#x3D; {
-    uuid: &#x27;&#x27;,
-    name: &#x27;&#x27;,
-    avatar: &#x27;&#x27;,
-    pusherChannel: &#x27;&#x27;,
-    isAnnouncement: false,
-    isDirectMessage: false,
+    channelId: 0,
+    channelName: &#x27;&#x27;,
+    channelAvatar: &#x27;&#x27;,
+    pusherChannelName: &#x27;&#x27;,
     readonly: false,
     roles: [],
-    unreadMessageCount: 0,
+    members: [],
+    unreadMessages: 0,
     lastMessage: &#x27;&#x27;,
     lastMessageCreated: &#x27;&#x27;
   };
 
   routeUrl &#x3D; &#x27;/chat/chat-room&#x27;;
-  channelUuid: string;
+  channelId: number | string;
   // message history list
   messageList: Message[] &#x3D; [];
   // the message that the current user is typing
   message: string;
-  messagePageCursor &#x3D; &#x27;&#x27;;
+  messagePageNumber &#x3D; 0;
   messagePageSize &#x3D; 20;
   loadingChatMessages &#x3D; false;
   sendingMessage &#x3D; false;
@@ -3065,8 +3033,6 @@ export class ChatRoomComponent extends RouterEnter {
   whoIsTyping: string;
   // this use to show/hide bottom section of text field which have attachment buttons and send button, when user start typing text messages
   showBottomAttachmentButtons &#x3D; false;
-
-  receivedMessage: Message;
 
   constructor(
     private chatService: ChatService,
@@ -3090,16 +3056,22 @@ export class ChatRoomComponent extends RouterEnter {
       if (this.utils.isMobile() &amp;&amp; (this.router.url !&#x3D;&#x3D; &#x27;/chat/chat-room&#x27;)) {
         return;
       }
-      this.receivedMessage &#x3D; null;
-      this.getMessageFromEvent(event);
-      if (this.receivedMessage.channelUuid !&#x3D;&#x3D; this.channelUuid) {
-        return;
+      const receivedMessage &#x3D; this.getMessageFromEvent(event);
+      if (receivedMessage.channelId !&#x3D;&#x3D; this.channelId) {
+        if (receivedMessage.channelIdAlias !&#x3D;&#x3D; this.channelId) {
+          // only display message for the current channel
+          return;
+        }
+        this.utils.broadcastEvent(&#x27;channel-id-update&#x27;, {
+          previousId: this.channelId,
+          currentId: receivedMessage.channelId
+        });
       }
-      if (this.receivedMessage &amp;&amp; this.receivedMessage.file) {
-        this.receivedMessage.preview &#x3D; this.attachmentPreview(this.receivedMessage.file);
+      if (receivedMessage &amp;&amp; receivedMessage.file) {
+        receivedMessage.preview &#x3D; this.attachmentPreview(receivedMessage.file);
       }
-      if (!this.utils.isEmpty(this.receivedMessage)) {
-        this.messageList.push(this.receivedMessage);
+      if (!this.utils.isEmpty(receivedMessage)) {
+        this.messageList.push(receivedMessage);
         this._markAsSeen();
         this._scrollToBottom();
       }
@@ -3108,7 +3080,7 @@ export class ChatRoomComponent extends RouterEnter {
 
   onEnter() {
     this._initialise();
-    this._subscribeToTypingEvent();
+    this._subscribeToPusherChannel();
     this._loadMessages();
     this._scrollToBottom();
   }
@@ -3117,49 +3089,50 @@ export class ChatRoomComponent extends RouterEnter {
     this.message &#x3D; &#x27;&#x27;;
     this.messageList &#x3D; [];
     this.loadingChatMessages &#x3D; false;
-    this.messagePageCursor &#x3D; &#x27;&#x27;;
+    this.messagePageNumber &#x3D; 0;
     this.messagePageSize &#x3D; 20;
     this.sendingMessage &#x3D; false;
     this.whoIsTyping &#x3D; &#x27;&#x27;;
     this.showBottomAttachmentButtons &#x3D; false;
   }
 
-  private _subscribeToTypingEvent() {
-    if ( this.utils.isEmpty(this.chatChannel.uuid) &amp;&amp; this.utils.isEmpty(this.chatChannel.name)) {
+  private _subscribeToPusherChannel() {
+    if (this.chatChannel.channelId &#x3D;&#x3D;&#x3D; 0 &amp;&amp; !this.chatChannel.channelName) {
       this.chatChannel &#x3D; this.storage.getCurrentChatChannel();
     }
-    this.channelUuid &#x3D; this.chatChannel.uuid;
+    this.channelId &#x3D; this.chatChannel.channelId;
+    // subscribe to the Pusher channel for the current chat channel
+    setTimeout(
+      () &#x3D;&gt; {
+        this.pusherService.subscribeChannel(&#x27;chat&#x27;, this.chatChannel.pusherChannelName);
+      },
+      100
+    );
     // subscribe to typing event
-    this.utils.getEvent(&#x27;typing-&#x27; + this.chatChannel.pusherChannel).subscribe(event &#x3D;&gt; this._showTyping(event));
+    this.utils.getEvent(&#x27;typing-&#x27; + this.chatChannel.pusherChannelName).subscribe(event &#x3D;&gt; this._showTyping(event));
+    this.utils.getEvent(&#x27;channel-id-update&#x27;).subscribe(event &#x3D;&gt; {
+      if (this.channelId &#x3D;&#x3D;&#x3D; event.previousId) {
+        this.channelId &#x3D; event.currentId;
+      }
+    });
   }
 
   /**
    * @description listen to pusher event for new message
    */
-  getMessageFromEvent(data) {
-    this.chatService.getChatMembers(this.channelUuid).subscribe(
-      members &#x3D;&gt; {
-        if (!members) {
-          return;
-        }
-        const sender &#x3D; members.find(member &#x3D;&gt; member.uuid &#x3D;&#x3D;&#x3D; data.senderUuid);
-        if (!sender) {
-          this.receivedMessage &#x3D; null;
-          return;
-        }
-        this.receivedMessage &#x3D; {
-          uuid: data.uuid,
-          senderName: sender.name,
-          senderRole: sender.role,
-          senderAvatar: sender.avatar,
-          isSender: data.isSender,
-          message: data.message,
-          created: data.created,
-          file: data.file,
-          channelUuid: data.channelUuid
-        };
-      }
-    );
+  getMessageFromEvent(data): Message {
+    return {
+      id: data.meta.id,
+      senderName: data.meta.sender.name,
+      senderRole: data.meta.sender.role,
+      senderAvatar: data.meta.sender.avatar,
+      isSender: false,
+      message: data.meta.message,
+      sentTime: data.meta.sent_time,
+      channelId: data.meta.channel_id,
+      channelIdAlias: data.meta.channel_id_alias,
+      file: data.meta.file
+    };
   }
 
   private _loadMessages() {
@@ -3170,48 +3143,34 @@ export class ChatRoomComponent extends RouterEnter {
       return;
     }
     this.loadingChatMessages &#x3D; true;
+    this.messagePageNumber +&#x3D; 1;
     this.chatService
       .getMessageList({
-        channelUuid: this.channelUuid,
-        cursor: this.messagePageCursor,
+        channel_id: this.channelId,
+        page: this.messagePageNumber,
         size: this.messagePageSize
       })
       .subscribe(
-        (messageListResult: MessageListResult) &#x3D;&gt; {
-          let messages &#x3D; messageListResult.messages;
+        (messages: Message[]) &#x3D;&gt; {
+          this.loadingChatMessages &#x3D; false;
           if (messages.length &#x3D;&#x3D;&#x3D; 0) {
-            this.messagePageCursor &#x3D; &#x27;&#x27;;
+            this.messagePageNumber -&#x3D; 1;
             return;
           }
-          this.messagePageCursor &#x3D; messageListResult.cursor;
-          this.chatService.getChatMembers(this.channelUuid).subscribe(
-            members &#x3D;&gt; {
-              this.loadingChatMessages &#x3D; false;
-              if (!members) {
-                return;
-              }
-              messages &#x3D; messages.map(msg &#x3D;&gt; {
-                if (msg.file) {
-                  msg.preview &#x3D; this.attachmentPreview(msg.file);
-                }
-                const sender &#x3D; members.find(member &#x3D;&gt; member.uuid &#x3D;&#x3D;&#x3D; msg.senderUuid);
-                if (sender) {
-                  msg.senderName &#x3D; sender.name;
-                  msg.senderRole &#x3D; sender.role;
-                  msg.senderAvatar &#x3D; sender.avatar;
-                }
-                return msg;
-              });
-              messages.reverse();
-              if (this.messageList.length &gt; 0) {
-                this.messageList &#x3D; messages.concat(this.messageList);
-              } else {
-                this.messageList &#x3D; messages;
-                this._scrollToBottom();
-              }
-              this._markAsSeen();
+          messages &#x3D; messages.map(msg &#x3D;&gt; {
+            if (msg.file) {
+              msg.preview &#x3D; this.attachmentPreview(msg.file);
             }
-          );
+            return msg;
+          });
+          messages.reverse();
+          if (this.messageList.length &gt; 0) {
+            this.messageList &#x3D; messages.concat(this.messageList);
+          } else {
+            this.messageList &#x3D; messages;
+            this._scrollToBottom();
+          }
+          this._markAsSeen();
         },
         error &#x3D;&gt; {
           this.loadingChatMessages &#x3D; false;
@@ -3237,24 +3196,18 @@ export class ChatRoomComponent extends RouterEnter {
     const message &#x3D; this.message;
     this._beforeSenMessages();
     this.chatService.postNewMessage({
-      channelUuid: this.channelUuid,
+      channelId: this.channelId,
       message: message
     }).subscribe(
       response &#x3D;&gt; {
-        this.pusherService.triggerSendMessage({
-          channelName: this.chatChannel.pusherChannel,
-          messageData: {
-            channelUuid: this.channelUuid,
-            uuid: response.message.uuid,
-            senderUuid: response.message.senderUuid,
-            message: response.message.message,
-            file: response.message.file,
-            isSender: response.message.isSender,
-            created: response.message.created
-          }
-        });
         this.messageList.push(response.message);
         this.utils.broadcastEvent(&#x27;chat:info-update&#x27;, true);
+        if (response.channelId) {
+          this.utils.broadcastEvent(&#x27;channel-id-update&#x27;, {
+            previousId: this.channelId,
+            currentId: response.channelId
+          });
+        }
         this._scrollToBottom();
         this._afterSendMessage();
       },
@@ -3282,42 +3235,28 @@ export class ChatRoomComponent extends RouterEnter {
     this.sendingMessage &#x3D; false;
     this.showBottomAttachmentButtons &#x3D; false;
     /**
-     * if there are no previous messages message page cursor is empty.
-     * after user start sending message, if page cursor is empty we need to set cursor.
-     * if we didn&#x27;t do that when user scroll message list api call with page cursor empty and load same messages again.
-     * only way we can get cursor is from API. so calling message list in background to get cursor.
+     * if there are no previous messages message page number is 0.
+     * after user start sending message, if page number is 0 we need to make it page 1.
+     * if we didn&#x27;t do that when user scroll message list api call with page number 1 and load same messages again.
      */
-    if (this.messageList.length &gt; 0 &amp;&amp; this.utils.isEmpty(this.messagePageCursor)) {
-      this.chatService
-      .getMessageList({
-        channelUuid: this.channelUuid,
-        cursor: this.messagePageCursor,
-        size: this.messagePageSize
-      })
-      .subscribe((messageListResult: MessageListResult) &#x3D;&gt; {
-        const messages &#x3D; messageListResult.messages;
-        if (messages.length &#x3D;&#x3D;&#x3D; 0) {
-          this.messagePageCursor &#x3D; &#x27;&#x27;;
-          return;
-        }
-        this.messagePageCursor &#x3D; messageListResult.cursor;
-      });
+    if (this.messageList.length &gt; 0 &amp;&amp; this.messagePageNumber &#x3D;&#x3D;&#x3D; 0) {
+      this.messagePageNumber +&#x3D; 1;
     }
   }
 
   // call chat api to mark message as seen messages
   private _markAsSeen() {
-    const messageIds &#x3D; this.messageList.map(m &#x3D;&gt; m.uuid);
+    const messageIds &#x3D; this.messageList.map(m &#x3D;&gt; m.id);
     this.chatService
       .markMessagesAsSeen({
         ids: messageIds,
-        channelUuid: this.channelUuid
+        channel_id: this.channelId
       })
       .subscribe (
         res &#x3D;&gt; {
           if (!this.utils.isMobile()) {
             this.utils.broadcastEvent(&#x27;chat-badge-update&#x27;, {
-              channelUuid: this.chatChannel.uuid,
+              channelId: this.chatChannel.channelId,
               readcount: messageIds.length
             });
           }
@@ -3369,8 +3308,8 @@ export class ChatRoomComponent extends RouterEnter {
       this.messageList[index].noAvatar &#x3D; false;
       return true;
     }
-    const currentMessageTime &#x3D; new Date(this.messageList[index].created);
-    const nextMessageTime &#x3D; new Date(this.messageList[index + 1].created);
+    const currentMessageTime &#x3D; new Date(this.messageList[index].sentTime);
+    const nextMessageTime &#x3D; new Date(this.messageList[index + 1].sentTime);
     if (currentMessage.senderName !&#x3D;&#x3D; nextMessage.senderName) {
       this.messageList[index].noAvatar &#x3D; false;
       return true;
@@ -3414,8 +3353,8 @@ export class ChatRoomComponent extends RouterEnter {
     if (!this.messageList[index - 1]) {
       return true;
     }
-    const currentMessageTime &#x3D; new Date(this.messageList[index].created);
-    const oldMessageTime &#x3D; new Date(this.messageList[index - 1].created);
+    const currentMessageTime &#x3D; new Date(this.messageList[index].sentTime);
+    const oldMessageTime &#x3D; new Date(this.messageList[index - 1].sentTime);
     if ((currentMessageTime.getDate() - oldMessageTime.getDate()) &#x3D;&#x3D;&#x3D; 0) {
       return this._checkmessageOldThan5Min(
         currentMessageTime,
@@ -3450,7 +3389,7 @@ export class ChatRoomComponent extends RouterEnter {
     } else {
       this.showBottomAttachmentButtons &#x3D; false;
     }
-    this.pusherService.triggerTyping(this.chatChannel.pusherChannel);
+    this.pusherService.triggerTyping(this.chatChannel.pusherChannelName);
   }
 
   private _showTyping(event) {
@@ -3517,7 +3456,7 @@ export class ChatRoomComponent extends RouterEnter {
     }
     this.sendingMessage &#x3D; true;
     this.chatService.postAttachmentMessage({
-      channelUuid: this.channelUuid,
+      channelId: this.channelId,
       message: this.message,
       file
     }).subscribe(
@@ -3528,7 +3467,7 @@ export class ChatRoomComponent extends RouterEnter {
         this.utils.broadcastEvent(&#x27;chat:info-update&#x27;, true);
         if (response.channelId) {
           this.utils.broadcastEvent(&#x27;channel-id-update&#x27;, {
-            previousId: this.channelUuid,
+            previousId: this.channelId,
             currentId: response.channelId
           });
         }
@@ -3681,7 +3620,7 @@ export class ChatRoomComponent extends RouterEnter {
     &lt;ion-icon *ngIf&#x3D;&quot;utils.isMobile()&quot; name&#x3D;&quot;arrow-back&quot; (click)&#x3D;&quot;back()&quot; color&#x3D;&quot;primary&quot; slot&#x3D;&quot;start&quot; margin-start&gt;&lt;/ion-icon&gt;
     &lt;ion-title class&#x3D;&quot;ion-text-center&quot; [ngClass]&#x3D;&quot;{
       &#x27;subtitle-2&#x27;: !utils.isMobile()
-    }&quot;&gt;{{ chatChannel.name }}&lt;/ion-title&gt;
+    }&quot;&gt;{{ chatChannel.channelName }}&lt;/ion-title&gt;
   &lt;/ion-toolbar&gt;
 &lt;/ion-header&gt;
 &lt;ion-content [ngClass]&#x3D;&quot;{&#x27;ion-content-absolute-with-footer&#x27;: !utils.isMobile()}&quot; color&#x3D;&quot;light&quot; [scrollEvents]&#x3D;&quot;true&quot; (ionScroll)&#x3D;&quot;loadMoreMessages($event)&quot;&gt;
@@ -3707,7 +3646,7 @@ export class ChatRoomComponent extends RouterEnter {
       &lt;ion-label [ngClass]&#x3D;&quot;getClassForMessageBubble(message)&quot; text-wrap&gt;
 
         &lt;div *ngIf&#x3D;&quot;checkToShowMessageTime(message)&quot; class&#x3D;&quot;time caption gray-2&quot;&gt;
-          &lt;p&gt;{{ getMessageDate(message.created) }}&lt;/p&gt;
+          &lt;p&gt;{{ getMessageDate(message.sentTime) }}&lt;/p&gt;
         &lt;/div&gt;
 
         &lt;ng-container *ngIf&#x3D;&quot;!message.file; else attachment&quot;&gt;
@@ -4159,7 +4098,7 @@ export class ChatRoomComponent extends RouterEnter {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header mode="ios">  <ion-toolbar [ngClass]="{\'ion-toolbar-absolute\': !utils.isMobile()}">    <ion-icon *ngIf="utils.isMobile()" name="arrow-back" (click)="back()" color="primary" slot="start" margin-start></ion-icon>    <ion-title class="ion-text-center" [ngClass]="{      \'subtitle-2\': !utils.isMobile()    }">{{ chatChannel.name }}</ion-title>  </ion-toolbar></ion-header><ion-content [ngClass]="{\'ion-content-absolute-with-footer\': !utils.isMobile()}" color="light" [scrollEvents]="true" (ionScroll)="loadMoreMessages($event)">  <div *ngIf="loadingChatMessages" class="ion-text-center">    <ion-spinner></ion-spinner>  </div>  <div *ngIf="!messageList.length && !loadingChatMessages" class="ion-text-center not-started-empty-status">    <img class="image" [ngClass]="{\'desktop\': !utils.isMobile()}" src="/assets/icon-epmty-chat.svg">    <p class="head-text headline-5 gray-3">Type your first message!</p>    <p class="sub-text subtitle-1 gray-1">It\'s time to start a chat</p>  </div>  <ion-list lines="none" color="light" class="chat-list" [ngClass]="{\'desktop-view\': !utils.isMobile()}">    <ion-item *ngFor="let message of messageList" color="light">      <ng-container *ngIf="isLastMessage(message)">        <ion-avatar [ngClass]="getAvatarClass(message)" slot="start">          <img [src]="message.senderAvatar">        </ion-avatar>      </ng-container>      <ion-label [ngClass]="getClassForMessageBubble(message)" text-wrap>        <div *ngIf="checkToShowMessageTime(message)" class="time caption gray-2">          <p>{{ getMessageDate(message.created) }}</p>        </div>        <ng-container *ngIf="!message.file; else attachment">          <div class="message-body">            <ng-container *ngIf="!message.isSender">              <p class="seen-text subtitle-1 black">{{message.senderName}}</p>              <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>            </ng-container>            <p class="message-text subtitle-1" [innerHTML]="message.message"></p>          </div>        </ng-container>        <ng-template #attachment>          <ng-container *ngIf="message.file && message.file.mimetype && message.file.mimetype.includes(\'video\')">            <div class="message-body video-attachment-container">              <ng-container *ngIf="!message.isSender">                <p class="seen-text subtitle-1 black">{{message.senderName}}</p>                <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>              </ng-container>              <div id="inner-box" (click)="preview(message.file)">                <p><ion-icon name="play-circle"></ion-icon></p>              </div>              <div class="label">                <p>                  <ion-label color="primary">                    {{ message.file.filename }}                  </ion-label>                </p>              </div>            </div>          </ng-container>          <ng-container *ngIf="message.file && message.file.mimetype && message.file.mimetype.includes(\'image\')">            <div class="message-body image" (click)="preview(message.file)">              <ng-container *ngIf="!message.isSender">                <p class="seen-text subtitle-1 black">{{message.senderName}}</p>                <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>              </ng-container>              <div [innerHTML]="message.preview"></div>            </div>          </ng-container>          <ng-container *ngIf="(message.file && !message.file.mimetype) || (message.file && (            !message.file.mimetype.includes(\'image\') && !message.file.mimetype.includes(\'video\')))">          <div class="message-body">            <ng-container *ngIf="!message.isSender">              <p class="seen-text subtitle-1 black">{{message.senderName}}</p>              <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>            </ng-container>            <ion-item class="general-attachment" (click)="previewFile(message.file)">              <ion-ripple-effect></ion-ripple-effect>              <ion-icon name="document-outline" slot="start"></ion-icon>              <ion-label color="primary">                {{ message.file.filename }}              </ion-label>              <ion-note *ngIf="getTypeByMime(message.file.mimetype)">                {{ getTypeByMime(message.file.mimetype) }}              </ion-note>            </ion-item>          </div>          </ng-container>        </ng-template>      </ion-label>    </ion-item>    <ng-container *ngIf="whoIsTyping">      <ion-item color="light">        <ion-label class="received-messages no-avatar" color="medium">          <p class="message-typing">            <i>{{ whoIsTyping }}</i>            <ion-spinner name="dots" class="vertical-middle"></ion-spinner>          </p>        </ion-label>      </ion-item>    </ng-container>    <ng-container *ngIf="sendingMessage">      <ion-item color="light">        <div class="message-sending-loading">          <ion-spinner name="bubbles"></ion-spinner>        </div>      </ion-item>    </ng-container>  </ion-list></ion-content><ion-footer *ngIf="!chatChannel.readonly" class="footer" [ngClass]="{\'ion-footer-absolute\': !utils.isMobile(), \'focus\': showBottomAttachmentButtons}">  <ion-grid class="white-bg">    <ion-row nowrap class="ion-no-padding">      <ion-col [size]="!utils.isMobile() || showBottomAttachmentButtons ? \'12\' : \'9\'" class="ion-align-self-center">        <ion-textarea          placeholder="Enter your message"          required="true"          name="message"          [(ngModel)]="message"          (ngModelChange)="typing()"          appAutoresize="100"          rows="1"          (ionFocus)="showBottomAttachmentButtons = true;"        ></ion-textarea>      </ion-col>      <ng-container *ngIf="utils.isMobile() && !showBottomAttachmentButtons">        <ng-container *ngTemplateOutlet="attachmentButtons; context: { offset: 0 }"></ng-container>      </ng-container>    </ion-row>    <ion-row nowrap class="ion-no-padding ion-align-items-end" *ngIf="!utils.isMobile() || showBottomAttachmentButtons">      <ng-container *ngTemplateOutlet="attachmentButtons; context: { offset: 8 }"></ng-container>      <ion-col class="ion-no-padding ion-text-center">        <ion-button (click)="sendMessage()" type="submit" fill="clear" class="ion-no-padding">          <ion-icon name="send-outline" slot="icon-only"></ion-icon>        </ion-button>      </ion-col>    </ion-row>  </ion-grid></ion-footer><ng-template #attachmentButtons let-offset="offset">  <ion-col [offset]="offset" class="ion-no-padding ion-text-center">    <ion-button (click)="attach(\'video\')" fill="clear" class="ion-no-padding">      <ion-icon name="film-outline" slot="icon-only"></ion-icon>    </ion-button>  </ion-col>  <ion-col class="ion-no-padding ion-text-center">    <ion-button (click)="attach(\'image\')" fill="clear" class="ion-no-padding">      <ion-icon name="images-outline" slot="icon-only"></ion-icon>    </ion-button>  </ion-col>  <ion-col class="ion-no-padding ion-text-center">    <ion-button (click)="attach(\'any\')" fill="clear" class="ion-no-padding">      <ion-icon name="attach-outline" slot="icon-only"></ion-icon>    </ion-button>  </ion-col></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><ion-header mode="ios">  <ion-toolbar [ngClass]="{\'ion-toolbar-absolute\': !utils.isMobile()}">    <ion-icon *ngIf="utils.isMobile()" name="arrow-back" (click)="back()" color="primary" slot="start" margin-start></ion-icon>    <ion-title class="ion-text-center" [ngClass]="{      \'subtitle-2\': !utils.isMobile()    }">{{ chatChannel.channelName }}</ion-title>  </ion-toolbar></ion-header><ion-content [ngClass]="{\'ion-content-absolute-with-footer\': !utils.isMobile()}" color="light" [scrollEvents]="true" (ionScroll)="loadMoreMessages($event)">  <div *ngIf="loadingChatMessages" class="ion-text-center">    <ion-spinner></ion-spinner>  </div>  <div *ngIf="!messageList.length && !loadingChatMessages" class="ion-text-center not-started-empty-status">    <img class="image" [ngClass]="{\'desktop\': !utils.isMobile()}" src="/assets/icon-epmty-chat.svg">    <p class="head-text headline-5 gray-3">Type your first message!</p>    <p class="sub-text subtitle-1 gray-1">It\'s time to start a chat</p>  </div>  <ion-list lines="none" color="light" class="chat-list" [ngClass]="{\'desktop-view\': !utils.isMobile()}">    <ion-item *ngFor="let message of messageList" color="light">      <ng-container *ngIf="isLastMessage(message)">        <ion-avatar [ngClass]="getAvatarClass(message)" slot="start">          <img [src]="message.senderAvatar">        </ion-avatar>      </ng-container>      <ion-label [ngClass]="getClassForMessageBubble(message)" text-wrap>        <div *ngIf="checkToShowMessageTime(message)" class="time caption gray-2">          <p>{{ getMessageDate(message.sentTime) }}</p>        </div>        <ng-container *ngIf="!message.file; else attachment">          <div class="message-body">            <ng-container *ngIf="!message.isSender">              <p class="seen-text subtitle-1 black">{{message.senderName}}</p>              <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>            </ng-container>            <p class="message-text subtitle-1" [innerHTML]="message.message"></p>          </div>        </ng-container>        <ng-template #attachment>          <ng-container *ngIf="message.file && message.file.mimetype && message.file.mimetype.includes(\'video\')">            <div class="message-body video-attachment-container">              <ng-container *ngIf="!message.isSender">                <p class="seen-text subtitle-1 black">{{message.senderName}}</p>                <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>              </ng-container>              <div id="inner-box" (click)="preview(message.file)">                <p><ion-icon name="play-circle"></ion-icon></p>              </div>              <div class="label">                <p>                  <ion-label color="primary">                    {{ message.file.filename }}                  </ion-label>                </p>              </div>            </div>          </ng-container>          <ng-container *ngIf="message.file && message.file.mimetype && message.file.mimetype.includes(\'image\')">            <div class="message-body image" (click)="preview(message.file)">              <ng-container *ngIf="!message.isSender">                <p class="seen-text subtitle-1 black">{{message.senderName}}</p>                <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>              </ng-container>              <div [innerHTML]="message.preview"></div>            </div>          </ng-container>          <ng-container *ngIf="(message.file && !message.file.mimetype) || (message.file && (            !message.file.mimetype.includes(\'image\') && !message.file.mimetype.includes(\'video\')))">          <div class="message-body">            <ng-container *ngIf="!message.isSender">              <p class="seen-text subtitle-1 black">{{message.senderName}}</p>              <p class="seen-text caption gray-2" *ngIf="chatChannel.roles.length > 1">{{message.senderRole}}</p>            </ng-container>            <ion-item class="general-attachment" (click)="previewFile(message.file)">              <ion-ripple-effect></ion-ripple-effect>              <ion-icon name="document-outline" slot="start"></ion-icon>              <ion-label color="primary">                {{ message.file.filename }}              </ion-label>              <ion-note *ngIf="getTypeByMime(message.file.mimetype)">                {{ getTypeByMime(message.file.mimetype) }}              </ion-note>            </ion-item>          </div>          </ng-container>        </ng-template>      </ion-label>    </ion-item>    <ng-container *ngIf="whoIsTyping">      <ion-item color="light">        <ion-label class="received-messages no-avatar" color="medium">          <p class="message-typing">            <i>{{ whoIsTyping }}</i>            <ion-spinner name="dots" class="vertical-middle"></ion-spinner>          </p>        </ion-label>      </ion-item>    </ng-container>    <ng-container *ngIf="sendingMessage">      <ion-item color="light">        <div class="message-sending-loading">          <ion-spinner name="bubbles"></ion-spinner>        </div>      </ion-item>    </ng-container>  </ion-list></ion-content><ion-footer *ngIf="!chatChannel.readonly" class="footer" [ngClass]="{\'ion-footer-absolute\': !utils.isMobile(), \'focus\': showBottomAttachmentButtons}">  <ion-grid class="white-bg">    <ion-row nowrap class="ion-no-padding">      <ion-col [size]="!utils.isMobile() || showBottomAttachmentButtons ? \'12\' : \'9\'" class="ion-align-self-center">        <ion-textarea          placeholder="Enter your message"          required="true"          name="message"          [(ngModel)]="message"          (ngModelChange)="typing()"          appAutoresize="100"          rows="1"          (ionFocus)="showBottomAttachmentButtons = true;"        ></ion-textarea>      </ion-col>      <ng-container *ngIf="utils.isMobile() && !showBottomAttachmentButtons">        <ng-container *ngTemplateOutlet="attachmentButtons; context: { offset: 0 }"></ng-container>      </ng-container>    </ion-row>    <ion-row nowrap class="ion-no-padding ion-align-items-end" *ngIf="!utils.isMobile() || showBottomAttachmentButtons">      <ng-container *ngTemplateOutlet="attachmentButtons; context: { offset: 8 }"></ng-container>      <ion-col class="ion-no-padding ion-text-center">        <ion-button (click)="sendMessage()" type="submit" fill="clear" class="ion-no-padding">          <ion-icon name="send-outline" slot="icon-only"></ion-icon>        </ion-button>      </ion-col>    </ion-row>  </ion-grid></ion-footer><ng-template #attachmentButtons let-offset="offset">  <ion-col [offset]="offset" class="ion-no-padding ion-text-center">    <ion-button (click)="attach(\'video\')" fill="clear" class="ion-no-padding">      <ion-icon name="film-outline" slot="icon-only"></ion-icon>    </ion-button>  </ion-col>  <ion-col class="ion-no-padding ion-text-center">    <ion-button (click)="attach(\'image\')" fill="clear" class="ion-no-padding">      <ion-icon name="images-outline" slot="icon-only"></ion-icon>    </ion-button>  </ion-col>  <ion-col class="ion-no-padding ion-text-center">    <ion-button (click)="attach(\'any\')" fill="clear" class="ion-no-padding">      <ion-icon name="attach-outline" slot="icon-only"></ion-icon>    </ion-button>  </ion-col></ng-template></div>'
     var COMPONENTS = [{'name': 'AchievementBadgeComponent', 'selector': 'achievement-badge'},{'name': 'AchievementPopUpComponent', 'selector': 'app-achievement-pop-up'},{'name': 'AchievementsComponent', 'selector': 'app-achievements'},{'name': 'ActivityCardComponent', 'selector': 'app-activity-card'},{'name': 'ActivityCompletePopUpComponent', 'selector': 'app-activity-complete-pop-up'},{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'ActivityRoutingComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssessmentComponent', 'selector': 'app-assessment'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'AuthDirectLoginComponent', 'selector': 'app-auth-direct-login'},{'name': 'AuthForgotPasswordComponent', 'selector': 'app-auth-forgot-password'},{'name': 'AuthLoginComponent', 'selector': 'app-auth-login'},{'name': 'AuthLogoutComponent', 'selector': 'app-auth-logout'},{'name': 'AuthRegistrationComponent', 'selector': 'app-auth-registration'},{'name': 'AuthResetPasswordComponent', 'selector': 'app-auth-reset-password'},{'name': 'BrandingLogoComponent', 'selector': 'app-branding-logo'},{'name': 'ChatComponent', 'selector': ''},{'name': 'ChatListComponent', 'selector': 'app-chat-list'},{'name': 'ChatPreviewComponent', 'selector': 'chat-preview'},{'name': 'ChatRoomComponent', 'selector': 'app-chat-room'},{'name': 'ChatViewComponent', 'selector': 'app-chat-view'},{'name': 'CircleProgressComponent', 'selector': 'app-circle-progress'},{'name': 'ClickableItemComponent', 'selector': 'clickable-item'},{'name': 'ContactNumberFormComponent', 'selector': 'app-contact-number-form'},{'name': 'DescriptionComponent', 'selector': 'app-description'},{'name': 'DeviceInfoComponent', 'selector': ''},{'name': 'EventDetailComponent', 'selector': 'app-event-detail'},{'name': 'EventListComponent', 'selector': 'app-event-list'},{'name': 'EventsComponent', 'selector': 'app-events'},{'name': 'EventsRoutingComponent', 'selector': ''},{'name': 'FastFeedbackComponent', 'selector': 'app-fast-feedback'},{'name': 'FileComponent', 'selector': 'app-file'},{'name': 'FileDisplayComponent', 'selector': 'app-file-display'},{'name': 'FilestackComponent', 'selector': 'file-stack'},{'name': 'GoMobileComponent', 'selector': 'go-mobile'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IconComponent', 'selector': 'icon-custom'},{'name': 'ImgComponent', 'selector': 'app-img'},{'name': 'ListItemComponent', 'selector': 'app-list-item'},{'name': 'LockTeamAssessmentPopUpComponent', 'selector': 'app-lock-team-assessment-pop-up'},{'name': 'MultipleComponent', 'selector': 'app-multiple'},{'name': 'OneofComponent', 'selector': 'app-oneof'},{'name': 'OverviewComponent', 'selector': 'app-overview'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PopUpComponent', 'selector': 'app-pop-up'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProjectComponent', 'selector': 'app-project'},{'name': 'QuestionComponent', 'selector': 'question'},{'name': 'QuestionsComponent', 'selector': 'app-questions'},{'name': 'ReviewListComponent', 'selector': 'app-review-list'},{'name': 'ReviewRatingComponent', 'selector': 'app-review-rating'},{'name': 'ReviewsComponent', 'selector': 'app-reviews'},{'name': 'ReviewsRoutingComponent', 'selector': ''},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SettingsRoutingComponent', 'selector': ''},{'name': 'SlidableComponent', 'selector': 'app-slidable'},{'name': 'SwitcherComponent', 'selector': 'app-switcher'},{'name': 'SwitcherProgramComponent', 'selector': 'app-switcher-program'},{'name': 'TabsComponent', 'selector': 'app-tabs'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'TasksRoutingComponent', 'selector': ''},{'name': 'TeamMemberSelectorComponent', 'selector': 'app-team-member-selector'},{'name': 'TermsConditionsPreviewComponent', 'selector': 'app-terms-conditions-preview'},{'name': 'TextComponent', 'selector': 'app-text'},{'name': 'TodoCardComponent', 'selector': 'app-todo-card'},{'name': 'TopicComponent', 'selector': 'app-topic'},{'name': 'UnlockingComponent', 'selector': 'unlocking'}];
     var DIRECTIVES = [{'name': 'AutoresizeDirective', 'selector': '[appAutoresize]'},{'name': 'DragAndDropDirective', 'selector': '[appDragAndDrop]'},{'name': 'FloatDirective', 'selector': '[appFloat]'}];
     var ACTUAL_COMPONENT = {'name': 'ChatRoomComponent'};

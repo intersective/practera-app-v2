@@ -305,6 +305,7 @@ const api &#x3D; {
   get: {
     activity: &#x27;api/activities.json&#x27;,
     todoItem: &#x27;api/v2/motivations/todo_item/list.json&#x27;,
+    chat: &#x27;api/v2/message/chat/list.json&#x27;,
     progress: &#x27;api/v2/motivations/progress/list.json&#x27;,
     events: &#x27;api/v2/act/event/list.json&#x27;,
   },
@@ -486,52 +487,41 @@ export class HomeService {
   }
 
   getChatMessage() {
-    return this.request.chatGraphQLQuery(
-      &#x60;query getChannels {
-        channels{
-          name unreadMessageCount lastMessage lastMessageCreated
+    return this.request.get(api.get.chat)
+      .pipe(map(response &#x3D;&gt; {
+        if (response.success &amp;&amp; response.data) {
+          return this._normaliseChatMessage(response.data);
         }
-      }&#x60;,
-      {},
-      {
-        noCache: true
-      }
-    )
-    .pipe(map(response &#x3D;&gt; {
-      if (response.data) {
-        return this._normaliseChatMessage(response.data);
-      }
-    }));
+      }));
   }
 
-  private _normaliseChatMessage(data): TodoItem {
-    const result &#x3D; JSON.parse(JSON.stringify(data.channels));
-    if (!Array.isArray(result)) {
+  private _normaliseChatMessage(chatMessages): TodoItem {
+    if (!Array.isArray(chatMessages)) {
       this.request.apiResponseFormatError(&#x27;Chat array format error&#x27;);
       return {};
     }
     let unreadMessages &#x3D; 0;
     let noOfChats &#x3D; 0;
     let todoItem: TodoItem;
-    result.forEach(message &#x3D;&gt; {
-      if (!this.utils.has(message, &#x27;unreadMessageCount&#x27;) ||
-          !this.utils.has(message, &#x27;name&#x27;) ||
-          !this.utils.has(message, &#x27;lastMessage&#x27;) ||
-          !this.utils.has(message, &#x27;lastMessageCreated&#x27;)) {
+    chatMessages.forEach(data &#x3D;&gt; {
+      if (!this.utils.has(data, &#x27;unread_messages&#x27;) ||
+          !this.utils.has(data, &#x27;channel_name&#x27;) ||
+          !this.utils.has(data, &#x27;last_message&#x27;) ||
+          !this.utils.has(data, &#x27;last_message_created&#x27;)) {
         return this.request.apiResponseFormatError(&#x27;Chat object format error&#x27;);
       }
-      if (message.unreadMessageCount &gt; 0) {
+      if (data.unread_messages &gt; 0) {
         todoItem &#x3D; {
           type: &#x27;chat&#x27;,
           name: &#x27;&#x27;,
           description: &#x27;&#x27;,
           time: &#x27;&#x27;,
         };
-        unreadMessages +&#x3D; message.unreadMessageCount;
+        unreadMessages +&#x3D; data.unread_messages;
         noOfChats ++;
-        todoItem.name &#x3D; message.name;
-        todoItem.description &#x3D; message.lastMessage;
-        todoItem.time &#x3D; this.utils.timeFormatter(message.lastMessageCreated);
+        todoItem.name &#x3D; data.channel_name;
+        todoItem.description &#x3D; data.last_message;
+        todoItem.time &#x3D; this.utils.timeFormatter(data.last_message_created);
       }
     });
     if (unreadMessages &gt; 1) {

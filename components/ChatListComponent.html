@@ -142,10 +142,6 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#pusherService">pusherService</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#router">router</a>
                             </li>
                             <li>
@@ -168,10 +164,6 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#_checkAndSubscribePusherChannels">_checkAndSubscribePusherChannels</a>
-                            </li>
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#_initialise">_initialise</a>
@@ -242,7 +234,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(chatService: <a href="../injectables/ChatService.html">ChatService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, storage: <a href="../injectables/BrowserStorageService.html">BrowserStorageService</a>, utils: <a href="../injectables/UtilsService.html">UtilsService</a>, fastFeedbackService: <a href="../injectables/FastFeedbackService.html">FastFeedbackService</a>, newrelic: <a href="../injectables/NewRelicService.html">NewRelicService</a>, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, pusherService: <a href="../injectables/PusherService.html">PusherService</a>)</code>
+<code>constructor(chatService: <a href="../injectables/ChatService.html">ChatService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, storage: <a href="../injectables/BrowserStorageService.html">BrowserStorageService</a>, utils: <a href="../injectables/UtilsService.html">UtilsService</a>, fastFeedbackService: <a href="../injectables/FastFeedbackService.html">FastFeedbackService</a>, newrelic: <a href="../injectables/NewRelicService.html">NewRelicService</a>, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -348,18 +340,6 @@
                                                     </td>
                                                     
                                                 </tr>
-                                                <tr>
-                                                        <td>pusherService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/PusherService.html" target="_self" >PusherService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -449,55 +429,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="_checkAndSubscribePusherChannels"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            _checkAndSubscribePusherChannels
-                        </b>
-                        <a href="#_checkAndSubscribePusherChannels"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>_checkAndSubscribePusherChannels()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:81</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>This method pusher service to subscribe to chat pusher channels</p>
-<ul>
-<li>first it call chat service to get pusher channels.</li>
-<li>then it call pusher service &#39;subscribeChannel&#39; method to subscribe.</li>
-<li>in pusher service it chaeck if we alrady subscribe or not.
- if not it will subscribe to the pusher channel.</li>
-</ul>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="_initialise"></a>
                     <span class="name">
                         <b>
@@ -518,8 +449,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:69</a></div>
                 </td>
             </tr>
 
@@ -559,8 +490,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:74</a></div>
                 </td>
             </tr>
 
@@ -600,8 +531,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:97</a></div>
                 </td>
             </tr>
 
@@ -675,8 +606,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="116"
-                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:116</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:109</a></div>
                 </td>
             </tr>
 
@@ -741,8 +672,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:82</a></div>
                 </td>
             </tr>
 
@@ -811,17 +742,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:63</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>This is an on enter method</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>nothing</p>
 
                     </div>
                 </td>
@@ -909,34 +848,6 @@
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:23</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="pusherService"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            pusherService</b>
-                            <a href="#pusherService"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../injectables/PusherService.html" target="_self" >PusherService</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/chat/chat-list/chat-list.component.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -1036,11 +947,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Output, EventEmitter, NgZone, Input } from &#x27;@angular/core&#x27;;
 import { Router, NavigationExtras } from &#x27;@angular/router&#x27;;
 import { BrowserStorageService } from &#x27;@services/storage.service&#x27;;
+import { RouterEnter } from &#x27;@services/router-enter.service&#x27;;
 import { UtilsService } from &#x27;@services/utils.service&#x27;;
 import { FastFeedbackService } from &#x27;../../fast-feedback/fast-feedback.service&#x27;;
 import { ChatService, ChatChannel } from &#x27;../chat.service&#x27;;
 import { NewRelicService } from &#x27;@shared/new-relic/new-relic.service&#x27;;
-import { PusherService } from &#x27;@shared/pusher/pusher.service&#x27;;
 
 /**
  * this is an app chat list component
@@ -1064,31 +975,39 @@ export class ChatListComponent {
     public utils: UtilsService,
     public fastFeedbackService: FastFeedbackService,
     private newrelic: NewRelicService,
-    private ngZone: NgZone,
-    public pusherService: PusherService
+    private ngZone: NgZone
   ) {
     this.newrelic.setPageViewName(&#x27;Chat list&#x27;);
     this.utils.getEvent(&#x27;chat:new-message&#x27;).subscribe(event &#x3D;&gt; this._loadChatData());
     this.utils.getEvent(&#x27;chat:info-update&#x27;).subscribe(event &#x3D;&gt; this._loadChatData());
     if (!this.utils.isMobile()) {
       this.utils.getEvent(&#x27;chat-badge-update&#x27;).subscribe(event &#x3D;&gt; {
-        const chatIndex &#x3D; this.chatList.findIndex(data &#x3D;&gt; data.uuid &#x3D;&#x3D;&#x3D; event.channelUuid);
+        const chatIndex &#x3D; this.chatList.findIndex(data &#x3D;&gt; data.channelId &#x3D;&#x3D;&#x3D; event.channelId);
         if (chatIndex &gt; -1) {
           // set time out because when this calling from pusher events it need a time out.
           setTimeout(() &#x3D;&gt; {
-            this.chatList[chatIndex].unreadMessageCount -&#x3D; event.readcount;
-            if (this.chatList[chatIndex].unreadMessageCount &lt; 0) {
-              this.chatList[chatIndex].unreadMessageCount &#x3D; 0;
+            this.chatList[chatIndex].unreadMessages -&#x3D; event.readcount;
+            if (this.chatList[chatIndex].unreadMessages &lt; 0) {
+              this.chatList[chatIndex].unreadMessages &#x3D; 0;
             }
           });
         }
       });
     }
+    this.utils.getEvent(&#x27;channel-id-update&#x27;).subscribe(event &#x3D;&gt; {
+      const channelIndex &#x3D; this.chatList.findIndex(c &#x3D;&gt; c.channelId &#x3D;&#x3D;&#x3D; event.previousId);
+      if (channelIndex) {
+        this.chatList[channelIndex].channelId &#x3D; event.currentId;
+      }
+    });
   }
 
+  /**
+    * This is an on enter method
+    * @returns nothing
+    */
   onEnter() {
     this._initialise();
-    this._checkAndSubscribePusherChannels();
     this._loadChatData();
     this.fastFeedbackService.pullFastFeedback().subscribe();
   }
@@ -1106,24 +1025,9 @@ export class ChatListComponent {
     });
   }
 
-  /**
-   * This method pusher service to subscribe to chat pusher channels
-   * - first it call chat service to get pusher channels.
-   * - then it call pusher service &#x27;subscribeChannel&#x27; method to subscribe.
-   * - in pusher service it chaeck if we alrady subscribe or not.
-   *   if not it will subscribe to the pusher channel.
-   */
-  private _checkAndSubscribePusherChannels() {
-    this.chatService.getPusherChannels().subscribe(pusherChannels &#x3D;&gt; {
-      pusherChannels.forEach(channel &#x3D;&gt; {
-        this.pusherService.subscribeChannel(&#x27;chat&#x27;, channel.pusherChannel);
-      });
-    });
-  }
-
   goToChatRoom(chat: ChatChannel) {
     this.newrelic.addPageAction(&#x27;selected chat room&#x27;, {
-      channelId: chat.uuid,
+      channelId: chat.channelId,
       chat: chat,
     });
     this._navigate(
@@ -1173,13 +1077,13 @@ export class ChatListComponent {
     &lt;clickable-item
       *ngFor&#x3D;&quot;let chat of chatList; let i &#x3D; index&quot;
       (click)&#x3D;&quot;goToChatRoom(chat)&quot;
-      [active]&#x3D;&quot;currentChat &amp;&amp; currentChat.uuid &#x3D;&#x3D; chat.uuid&quot;
-      [ngClass]&#x3D;&quot;{&#x27;unread&#x27;: chat.unreadMessageCount &gt; 0}&quot;
+      [active]&#x3D;&quot;currentChat &amp;&amp; currentChat.channelId &#x3D;&#x3D; chat.channelId&quot;
+      [ngClass]&#x3D;&quot;{&#x27;unread&#x27;: chat.unreadMessages &gt; 0}&quot;
       [lines]&#x3D;&quot;&#x27;none&#x27;&quot;&gt;
-      &lt;ion-avatar slot&#x3D;&quot;start&quot; text-center&gt;&lt;img [src]&#x3D;&quot;chat.avatar&quot;&gt;&lt;/ion-avatar&gt;
+      &lt;ion-avatar slot&#x3D;&quot;start&quot; text-center&gt;&lt;img [src]&#x3D;&quot;chat.channelAvatar&quot;&gt;&lt;/ion-avatar&gt;
       &lt;ion-label&gt;
         &lt;div class&#x3D;&quot;chat-name-container caption&quot;&gt;
-          &lt;p class&#x3D;&quot;chat-name subtitle-1&quot; [ngClass]&#x3D;&quot;{&#x27;bold&#x27;: chat.unreadMessageCount &gt; 0}&quot;&gt;{{ chat.name }}&lt;/p&gt;
+          &lt;p class&#x3D;&quot;chat-name subtitle-1&quot; [ngClass]&#x3D;&quot;{&#x27;bold&#x27;: chat.unreadMessages &gt; 0}&quot;&gt;{{ chat.channelName }}&lt;/p&gt;
           &lt;ng-container *ngIf&#x3D;&quot;(chat.roles.length &#x3D;&#x3D;&#x3D; 1) &amp;&amp; (chat.roles.includes(&#x27;mentor&#x27;))&quot;&gt;
             &lt;span&gt;mentor&lt;/span&gt;
           &lt;/ng-container&gt;
@@ -1193,8 +1097,8 @@ export class ChatListComponent {
         &lt;div class&#x3D;&quot;caption gray-2&quot;&gt;
           &lt;span&gt;{{ getChatDate(chat.lastMessageCreated) }}&lt;/span&gt;
         &lt;/div&gt;
-        &lt;ng-container *ngIf&#x3D;&quot;chat.unreadMessageCount &gt; 0&quot;&gt;
-          &lt;ion-badge class&#x3D;&quot;caption&quot;&gt;{{ chat.unreadMessageCount }}&lt;/ion-badge&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;chat.unreadMessages &gt; 0&quot;&gt;
+          &lt;ion-badge class&#x3D;&quot;caption&quot;&gt;{{ chat.unreadMessages }}&lt;/ion-badge&gt;
         &lt;/ng-container&gt;
       &lt;/div&gt;
     &lt;/clickable-item&gt;
@@ -1329,7 +1233,7 @@ clickable-item {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ion-header mode="ios">  <ion-toolbar [ngClass]="{\'ion-toolbar-absolute\': !utils.isMobile()}">    <ion-title>Chat</ion-title>  </ion-toolbar></ion-header><ion-content color="light" [ngClass]="{\'ion-content-absolute\': !utils.isMobile()}">  <ng-container *ngIf="loadingChatList">    <div class="ion-text-center">      <ion-spinner></ion-spinner>    </div>  </ng-container>  <ion-list [ngClass]="{\'desktop-view\': !utils.isMobile()}">    <clickable-item      *ngFor="let chat of chatList; let i = index"      (click)="goToChatRoom(chat)"      [active]="currentChat && currentChat.uuid == chat.uuid"      [ngClass]="{\'unread\': chat.unreadMessageCount > 0}"      [lines]="\'none\'">      <ion-avatar slot="start" text-center><img [src]="chat.avatar"></ion-avatar>      <ion-label>        <div class="chat-name-container caption">          <p class="chat-name subtitle-1" [ngClass]="{\'bold\': chat.unreadMessageCount > 0}">{{ chat.name }}</p>          <ng-container *ngIf="(chat.roles.length === 1) && (chat.roles.includes(\'mentor\'))">            <span>mentor</span>          </ng-container>        </div>        <ng-container *ngIf="chat.lastMessage; else messgeElseBlock">          <p class="body-2">{{ chat.lastMessage }}</p>        </ng-container>        <ng-template #messgeElseBlock><p class="body-2 gray-2">No messages.</p></ng-template>      </ion-label>      <div slot="end" class="time-container">        <div class="caption gray-2">          <span>{{ getChatDate(chat.lastMessageCreated) }}</span>        </div>        <ng-container *ngIf="chat.unreadMessageCount > 0">          <ion-badge class="caption">{{ chat.unreadMessageCount }}</ion-badge>        </ng-container>      </div>    </clickable-item>  </ion-list></ion-content></div>'
+        var COMPONENT_TEMPLATE = '<div><ion-header mode="ios">  <ion-toolbar [ngClass]="{\'ion-toolbar-absolute\': !utils.isMobile()}">    <ion-title>Chat</ion-title>  </ion-toolbar></ion-header><ion-content color="light" [ngClass]="{\'ion-content-absolute\': !utils.isMobile()}">  <ng-container *ngIf="loadingChatList">    <div class="ion-text-center">      <ion-spinner></ion-spinner>    </div>  </ng-container>  <ion-list [ngClass]="{\'desktop-view\': !utils.isMobile()}">    <clickable-item      *ngFor="let chat of chatList; let i = index"      (click)="goToChatRoom(chat)"      [active]="currentChat && currentChat.channelId == chat.channelId"      [ngClass]="{\'unread\': chat.unreadMessages > 0}"      [lines]="\'none\'">      <ion-avatar slot="start" text-center><img [src]="chat.channelAvatar"></ion-avatar>      <ion-label>        <div class="chat-name-container caption">          <p class="chat-name subtitle-1" [ngClass]="{\'bold\': chat.unreadMessages > 0}">{{ chat.channelName }}</p>          <ng-container *ngIf="(chat.roles.length === 1) && (chat.roles.includes(\'mentor\'))">            <span>mentor</span>          </ng-container>        </div>        <ng-container *ngIf="chat.lastMessage; else messgeElseBlock">          <p class="body-2">{{ chat.lastMessage }}</p>        </ng-container>        <ng-template #messgeElseBlock><p class="body-2 gray-2">No messages.</p></ng-template>      </ion-label>      <div slot="end" class="time-container">        <div class="caption gray-2">          <span>{{ getChatDate(chat.lastMessageCreated) }}</span>        </div>        <ng-container *ngIf="chat.unreadMessages > 0">          <ion-badge class="caption">{{ chat.unreadMessages }}</ion-badge>        </ng-container>      </div>    </clickable-item>  </ion-list></ion-content></div>'
     var COMPONENTS = [{'name': 'AchievementBadgeComponent', 'selector': 'achievement-badge'},{'name': 'AchievementPopUpComponent', 'selector': 'app-achievement-pop-up'},{'name': 'AchievementsComponent', 'selector': 'app-achievements'},{'name': 'ActivityCardComponent', 'selector': 'app-activity-card'},{'name': 'ActivityCompletePopUpComponent', 'selector': 'app-activity-complete-pop-up'},{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'ActivityRoutingComponent', 'selector': ''},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssessmentComponent', 'selector': 'app-assessment'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'AuthDirectLoginComponent', 'selector': 'app-auth-direct-login'},{'name': 'AuthForgotPasswordComponent', 'selector': 'app-auth-forgot-password'},{'name': 'AuthLoginComponent', 'selector': 'app-auth-login'},{'name': 'AuthLogoutComponent', 'selector': 'app-auth-logout'},{'name': 'AuthRegistrationComponent', 'selector': 'app-auth-registration'},{'name': 'AuthResetPasswordComponent', 'selector': 'app-auth-reset-password'},{'name': 'BrandingLogoComponent', 'selector': 'app-branding-logo'},{'name': 'ChatComponent', 'selector': ''},{'name': 'ChatListComponent', 'selector': 'app-chat-list'},{'name': 'ChatPreviewComponent', 'selector': 'chat-preview'},{'name': 'ChatRoomComponent', 'selector': 'app-chat-room'},{'name': 'ChatViewComponent', 'selector': 'app-chat-view'},{'name': 'CircleProgressComponent', 'selector': 'app-circle-progress'},{'name': 'ClickableItemComponent', 'selector': 'clickable-item'},{'name': 'ContactNumberFormComponent', 'selector': 'app-contact-number-form'},{'name': 'DescriptionComponent', 'selector': 'app-description'},{'name': 'DeviceInfoComponent', 'selector': ''},{'name': 'EventDetailComponent', 'selector': 'app-event-detail'},{'name': 'EventListComponent', 'selector': 'app-event-list'},{'name': 'EventsComponent', 'selector': 'app-events'},{'name': 'EventsRoutingComponent', 'selector': ''},{'name': 'FastFeedbackComponent', 'selector': 'app-fast-feedback'},{'name': 'FileComponent', 'selector': 'app-file'},{'name': 'FileDisplayComponent', 'selector': 'app-file-display'},{'name': 'FilestackComponent', 'selector': 'file-stack'},{'name': 'GoMobileComponent', 'selector': 'go-mobile'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'IconComponent', 'selector': 'icon-custom'},{'name': 'ImgComponent', 'selector': 'app-img'},{'name': 'ListItemComponent', 'selector': 'app-list-item'},{'name': 'LockTeamAssessmentPopUpComponent', 'selector': 'app-lock-team-assessment-pop-up'},{'name': 'MultipleComponent', 'selector': 'app-multiple'},{'name': 'OneofComponent', 'selector': 'app-oneof'},{'name': 'OverviewComponent', 'selector': 'app-overview'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PopUpComponent', 'selector': 'app-pop-up'},{'name': 'PreviewComponent', 'selector': 'app-preview'},{'name': 'ProjectComponent', 'selector': 'app-project'},{'name': 'QuestionComponent', 'selector': 'question'},{'name': 'QuestionsComponent', 'selector': 'app-questions'},{'name': 'ReviewListComponent', 'selector': 'app-review-list'},{'name': 'ReviewRatingComponent', 'selector': 'app-review-rating'},{'name': 'ReviewsComponent', 'selector': 'app-reviews'},{'name': 'ReviewsRoutingComponent', 'selector': ''},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SettingsRoutingComponent', 'selector': ''},{'name': 'SlidableComponent', 'selector': 'app-slidable'},{'name': 'SwitcherComponent', 'selector': 'app-switcher'},{'name': 'SwitcherProgramComponent', 'selector': 'app-switcher-program'},{'name': 'TabsComponent', 'selector': 'app-tabs'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'TasksRoutingComponent', 'selector': ''},{'name': 'TeamMemberSelectorComponent', 'selector': 'app-team-member-selector'},{'name': 'TermsConditionsPreviewComponent', 'selector': 'app-terms-conditions-preview'},{'name': 'TextComponent', 'selector': 'app-text'},{'name': 'TodoCardComponent', 'selector': 'app-todo-card'},{'name': 'TopicComponent', 'selector': 'app-topic'},{'name': 'UnlockingComponent', 'selector': 'unlocking'}];
     var DIRECTIVES = [{'name': 'AutoresizeDirective', 'selector': '[appAutoresize]'},{'name': 'DragAndDropDirective', 'selector': '[appDragAndDrop]'},{'name': 'FloatDirective', 'selector': '[appFloat]'}];
     var ACTUAL_COMPONENT = {'name': 'ChatListComponent'};

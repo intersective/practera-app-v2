@@ -139,8 +139,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/shared/request/request.service.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/shared/request/request.service.ts:34</a></div>
                 </td>
             </tr>
 
@@ -209,8 +209,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/app/shared/request/request.service.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/shared/request/request.service.ts:38</a></div>
                 </td>
             </tr>
 
@@ -279,8 +279,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/shared/request/request.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/shared/request/request.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -349,8 +349,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/shared/request/request.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/shared/request/request.service.ts:30</a></div>
                 </td>
             </tr>
 
@@ -417,8 +417,6 @@ import { BrowserStorageService } from &#x27;@services/storage.service&#x27;;
 import { environment } from &#x27;@environments/environment&#x27;;
 import { NewRelicService } from &#x27;@shared/new-relic/new-relic.service&#x27;;
 import { Apollo } from &#x27;apollo-angular&#x27;;
-import { HttpLink } from &#x27;apollo-angular-link-http&#x27;;
-import { InMemoryCache } from &#x27;apollo-cache-inmemory&#x27;;
 import gql from &#x27;graphql-tag&#x27;;
 
 @Injectable({ providedIn: &#x27;root&#x27; })
@@ -599,41 +597,6 @@ export class RequestService {
       .pipe(
         concatMap(response &#x3D;&gt; {
           this._refreshApikey(response);
-          return of(response);
-        }),
-        catchError((error) &#x3D;&gt; this.handleError(error))
-      );
-  }
-
-  /**
-   * Valid options:
-   * noCache: Boolean default false. If set to false, will not cache the result
-   */
-  chatGraphQLQuery(query: string, variables?: any, options?: any): Observable&lt;any&gt; {
-    options &#x3D; {...{ noCache: false }, ...options};
-    const watch &#x3D; this.apollo.use(&#x27;chat&#x27;).watchQuery({
-      query: gql(query),
-      variables: variables || {},
-      fetchPolicy: options.noCache ? &#x27;no-cache&#x27; : &#x27;cache-and-network&#x27;
-    });
-    return watch.valueChanges
-      .pipe(map(response &#x3D;&gt; {
-        this._refreshApikey(response);
-        return response;
-      }))
-      .pipe(
-        catchError((error) &#x3D;&gt; this.handleError(error))
-      );
-  }
-
-  chatGraphQLMutate(query: string, variables &#x3D; {}): Observable&lt;any&gt; {
-    return this.apollo.use(&#x27;chat&#x27;).mutate({
-      mutation: gql(query),
-      variables: variables
-    })
-      .pipe(
-        concatMap(response &#x3D;&gt; {
-          // this._refreshApikey(response);
           return of(response);
         }),
         catchError((error) &#x3D;&gt; this.handleError(error))
