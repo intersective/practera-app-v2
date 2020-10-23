@@ -28,13 +28,13 @@
 <title>cluster_FilestackModule_providers</title>
 <polygon fill="none" stroke="black" points="440,-78 440,-130 606,-130 606,-78 440,-78"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_FilestackModule_exports</title>
-<polygon fill="none" stroke="black" points="178,-208 178,-260 450,-260 450,-208 178,-208"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_FilestackModule_imports</title>
 <polygon fill="none" stroke="black" points="318,-78 318,-130 432,-130 432,-78 318,-78"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_FilestackModule_exports</title>
+<polygon fill="none" stroke="black" points="178,-208 178,-260 450,-260 450,-208 178,-208"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_FilestackModule_declarations</title>
