@@ -28,13 +28,13 @@
 <title>cluster_AssessmentModule_declarations</title>
 <polygon fill="none" stroke="black" points="584,-78 584,-130 748,-130 748,-78 584,-78"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_AssessmentModule_exports</title>
-<polygon fill="none" stroke="black" points="156,-208 156,-260 569,-260 569,-208 156,-208"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_AssessmentModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-78 16,-130 576,-130 576,-78 16,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_AssessmentModule_exports</title>
+<polygon fill="none" stroke="black" points="156,-208 156,-260 569,-260 569,-208 156,-208"/>
 </g>
 <!-- AssessmentComponent -->
 <g id="node1" class="node">
