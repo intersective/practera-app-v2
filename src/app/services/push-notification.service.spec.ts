@@ -3,22 +3,30 @@ import { PushNotificationService } from './push-notification.service';
 import { Inject, Injectable, InjectionToken, NgZone } from '@angular/core';
 import { Observable, interval, pipe, of } from 'rxjs';
 import { switchMap, concatMap, tap, retryWhen, take, delay } from 'rxjs/operators';
-import { RequestService } from '@shared/request/request.service';
 import { BrowserStorageService } from '@services/storage.service';
 import { environment } from '@environments/environment';
-import {
-  PluginRegistry,
-  Plugins,
-  PushNotification,
-  PushNotificationToken,
-  PushNotificationActionPerformed,
-  LocalNotificationEnabledResult,
-  PushNotificationsPlugin
-} from '@capacitor/core';
+import { Plugins, WebPlugin } from '@capacitor/core';
+
+Plugins.PushNotifications = jasmine.createSpyObj('PushNotifications', [
+  'requestPermission',
+  'register',
+  'addListener',
+]);
+
+class MockPlugin extends WebPlugin {
+  constructor() {
+    super({ name: 'Mock' });
+  }
+  trigger() {
+    this.notifyListeners('test', {
+      value: 'Capacitors on top of toast!',
+    });
+  }
+}
 
 // const { PushNotifications, LocalNotifications, PusherBeams } = Plugins;
 
-class PushNotifications {
+/*class PushNotifications {
   async requestPermission() {
     return {
       granted: true
@@ -30,15 +38,18 @@ class PushNotifications {
   addListener() {
     return true;
   }
-}
+}*/
 
 describe('PushNotificationService', () => {
   let service: PushNotificationService;
   // let requestSpy: jasmine.SpyObj<RequestService>;
   // let pushNotificationsSpy;
   // let pusherBeamsSpy: jasmine.SpyObj<PusherBeams>;
+  let storageSpy: jasmine.SpyObj<BrowserStorageService>;
 
   beforeEach(() => {
+
+    // PushNotifications = jasmine.spyOn('PushNotifications', ['addListener']);
     TestBed.configureTestingModule({
       providers: [
         {
@@ -56,12 +67,14 @@ describe('PushNotificationService', () => {
       ]
     });
 
-    service = TestBed.inject(PushNotificationService) as jasmine.SpyObj<PushNotificationService>;
+    service = new PushNotificationService(storageSpy);
+    // service = TestBed.inject(PushNotificationService) as jasmine.SpyObj<PushNotificationService>;
     // pushNotificationsSpy = TestBed.inject(PushNotifications) as jasmine.SpyObj<PushNotifications>;
     // pusherBeamsSpy = TestBed.inject(PusherBeams) as jasmine.SpyObj<PusherBeams>;
   });
 
   it('should be created', () => {
+    console.log('Capacitor::', Plugins);
     expect(service).toBeTruthy();
   });
 
