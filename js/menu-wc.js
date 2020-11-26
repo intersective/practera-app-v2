@@ -1256,6 +1256,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/EventGroup.html" data-type="entity-link">EventGroup</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Experience.html" data-type="entity-link">Experience</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/ExperienceConfig.html" data-type="entity-link">ExperienceConfig</a>
                             </li>
                             <li class="link">
