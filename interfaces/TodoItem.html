@@ -339,8 +339,6 @@ export interface TodoItem {
 
 export class HomeService {
 
-  currentActivityId &#x3D; 0;
-
   constructor(
     private storage: BrowserStorageService,
     private request: RequestService,
@@ -555,71 +553,10 @@ export class HomeService {
       return 0;
     }
 
-    this._getCurrentActivityId(data);
-
     if (data.Project.progress &gt; 1) {
       data.Project.progress &#x3D; 1;
     }
     return Math.round(data.Project.progress * 100);
-  }
-
-  private _getCurrentActivityId(data) {
-    // initialise current activity id
-    this.currentActivityId &#x3D; 0;
-    data.Project.Milestone.forEach(this._loopThroughMilestones, this);
-    // regard last activity as the current activity if all activities are finished
-    if (this.currentActivityId &#x3D;&#x3D;&#x3D; 0) {
-      const milestones &#x3D; data.Project.Milestone;
-      const activities &#x3D; milestones[milestones.length - 1].Activity;
-      this.currentActivityId &#x3D; activities[activities.length - 1].id;
-    }
-  }
-
-  private _loopThroughMilestones(milestone) {
-    if (this.currentActivityId &gt; 0) {
-      return;
-    }
-    if (!this.utils.has(milestone, &#x27;Activity&#x27;) ||
-        !Array.isArray(milestone.Activity)) {
-      this.request.apiResponseFormatError(&#x27;Progress.Milestone format error&#x27;);
-      return ;
-    }
-    milestone.Activity.forEach(this._loopThroughActivities, this);
-  }
-
-  private _loopThroughActivities(activity) {
-    if (this.currentActivityId &gt; 0) {
-      return;
-    }
-    if (!this.utils.has(activity, &#x27;progress&#x27;) ||
-        !this.utils.has(activity, &#x27;id&#x27;)) {
-      this.request.apiResponseFormatError(&#x27;Progress.Milestone.Activity format error&#x27;);
-      return ;
-    }
-    if (activity.progress &lt; 1) {
-      this.currentActivityId &#x3D; activity.id;
-    }
-  }
-
-  private _normaliseActivity(data): Activity {
-    if (!Array.isArray(data) ||
-        !this.utils.has(data[0], &#x27;Activity.name&#x27;) ||
-        !this.utils.has(data[0], &#x27;Activity.is_locked&#x27;)) {
-      this.request.apiResponseFormatError(&#x27;Activity format error&#x27;);
-      return {
-        id: null,
-        name: &#x27;&#x27;,
-        isLocked: false,
-        leadImage: &#x27;&#x27;
-      };
-    }
-    const thisActivity &#x3D; data[0];
-    return {
-      id: this.currentActivityId,
-      name: thisActivity.Activity.name,
-      isLocked: thisActivity.Activity.is_locked,
-      leadImage: (thisActivity.Activity.lead_image ? thisActivity.Activity.lead_image : &#x27;&#x27;)
-    };
   }
 
   /**
