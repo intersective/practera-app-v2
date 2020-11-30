@@ -30,6 +30,14 @@ module.exports = function (config) {
             useLegacyStyle: true,
             showOnlyFailed: false
         },
+        sonarQubeUnitReporter: {
+            sonarQubeVersion: 'LATEST',
+            outputFile: '../tests/ut_report.xml',
+            overrideTestDescription: true,
+            testPaths: ['./src'],
+            testFilePattern: '.spec.ts',
+            useBrowserName: false
+          },
         reporters: ['progress', 'kjhtml', 'html'],
         port: 19876,
         colors: true,
