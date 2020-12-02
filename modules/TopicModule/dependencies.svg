@@ -32,13 +32,13 @@
 <title>cluster_TopicModule_declarations</title>
 <polygon fill="none" stroke="black" points="546,-78 546,-130 676,-130 676,-78 546,-78"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_TopicModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 538,-130 538,-78 16,-78"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_TopicModule_exports</title>
 <polygon fill="none" stroke="black" points="156,-208 156,-260 668,-260 668,-208 156,-208"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_TopicModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 538,-130 538,-78 16,-78"/>
 </g>
 <!-- TopicComponent -->
 <g id="node1" class="node">
