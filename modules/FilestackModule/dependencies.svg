@@ -28,83 +28,83 @@
 <title>cluster_FilestackModule_providers</title>
 <polygon fill="none" stroke="black" points="440,-78 440,-130 606,-130 606,-78 440,-78"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_FilestackModule_declarations</title>
-<polygon fill="none" stroke="black" points="138,-78 138,-130 432,-130 432,-78 138,-78"/>
-</g>
 <g id="clust6" class="cluster">
 <title>cluster_FilestackModule_exports</title>
-<polygon fill="none" stroke="black" points="157,-208 157,-260 429,-260 429,-208 157,-208"/>
+<polygon fill="none" stroke="black" points="178,-208 178,-260 450,-260 450,-208 178,-208"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_FilestackModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 130,-130 130,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="318,-78 318,-130 432,-130 432,-78 318,-78"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_FilestackModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 310,-130 310,-78 16,-78"/>
 </g>
 <!-- FilestackComponent -->
 <g id="node1" class="node">
 <title>FilestackComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="423.88,-122 292.12,-122 292.12,-86 423.88,-86 423.88,-122"/>
-<text text-anchor="middle" x="358" y="-99.8" font-family="Times,serif" font-size="14.00">FilestackComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="301.88,-122 170.12,-122 170.12,-86 301.88,-86 301.88,-122"/>
+<text text-anchor="middle" x="236" y="-99.8" font-family="Times,serif" font-size="14.00">FilestackComponent</text>
 </g>
 <!-- FilestackModule -->
 <g id="node3" class="node">
 <title>FilestackModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="339.09,-187 336.09,-191 315.09,-191 312.09,-187 228.91,-187 228.91,-151 339.09,-151 339.09,-187"/>
-<text text-anchor="middle" x="284" y="-164.8" font-family="Times,serif" font-size="14.00">FilestackModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="360.09,-187 357.09,-191 336.09,-191 333.09,-187 249.91,-187 249.91,-151 360.09,-151 360.09,-187"/>
+<text text-anchor="middle" x="305" y="-164.8" font-family="Times,serif" font-size="14.00">FilestackModule</text>
 </g>
 <!-- FilestackComponent&#45;&gt;FilestackModule -->
 <g id="edge1" class="edge">
 <title>FilestackComponent&#45;&gt;FilestackModule</title>
-<path fill="none" stroke="black" d="M315.55,-122.11C315.55,-122.11 315.55,-140.99 315.55,-140.99"/>
-<polygon fill="black" stroke="black" points="312.05,-140.99 315.55,-150.99 319.05,-140.99 312.05,-140.99"/>
+<path fill="none" stroke="black" d="M275.95,-122.11C275.95,-122.11 275.95,-140.99 275.95,-140.99"/>
+<polygon fill="black" stroke="black" points="272.45,-140.99 275.95,-150.99 279.45,-140.99 272.45,-140.99"/>
 </g>
 <!-- PreviewComponent -->
 <g id="node2" class="node">
 <title>PreviewComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="273.7,-122 146.3,-122 146.3,-86 273.7,-86 273.7,-122"/>
-<text text-anchor="middle" x="210" y="-99.8" font-family="Times,serif" font-size="14.00">PreviewComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="151.7,-122 24.3,-122 24.3,-86 151.7,-86 151.7,-122"/>
+<text text-anchor="middle" x="88" y="-99.8" font-family="Times,serif" font-size="14.00">PreviewComponent</text>
 </g>
 <!-- PreviewComponent&#45;&gt;FilestackModule -->
 <g id="edge2" class="edge">
 <title>PreviewComponent&#45;&gt;FilestackModule</title>
-<path fill="none" stroke="black" d="M251.28,-122.11C251.28,-122.11 251.28,-140.99 251.28,-140.99"/>
-<polygon fill="black" stroke="black" points="247.78,-140.99 251.28,-150.99 254.78,-140.99 247.78,-140.99"/>
+<path fill="none" stroke="black" d="M88,-122.11C88,-141.34 88,-169 88,-169 88,-169 239.68,-169 239.68,-169"/>
+<polygon fill="black" stroke="black" points="239.68,-172.5 249.68,-169 239.68,-165.5 239.68,-172.5"/>
 </g>
 <!-- FilestackComponent  -->
 <g id="node5" class="node">
 <title>FilestackComponent </title>
-<polygon fill="#fb8072" stroke="black" points="420.88,-252 285.12,-252 285.12,-216 420.88,-216 420.88,-252"/>
-<text text-anchor="middle" x="353" y="-229.8" font-family="Times,serif" font-size="14.00">FilestackComponent </text>
+<polygon fill="#fb8072" stroke="black" points="441.88,-252 306.12,-252 306.12,-216 441.88,-216 441.88,-252"/>
+<text text-anchor="middle" x="374" y="-229.8" font-family="Times,serif" font-size="14.00">FilestackComponent </text>
 </g>
 <!-- FilestackModule&#45;&gt;FilestackComponent  -->
 <g id="edge4" class="edge">
 <title>FilestackModule&#45;&gt;FilestackComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M312.18,-187.11C312.18,-187.11 312.18,-205.99 312.18,-205.99"/>
-<polygon fill="black" stroke="black" points="308.68,-205.99 312.18,-215.99 315.68,-205.99 308.68,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M333.18,-187.11C333.18,-187.11 333.18,-205.99 333.18,-205.99"/>
+<polygon fill="black" stroke="black" points="329.68,-205.99 333.18,-215.99 336.68,-205.99 329.68,-205.99"/>
 </g>
 <!-- SharedModule  -->
 <g id="node6" class="node">
 <title>SharedModule </title>
-<polygon fill="#fb8072" stroke="black" points="266.92,-252 165.08,-252 165.08,-216 266.92,-216 266.92,-252"/>
-<text text-anchor="middle" x="216" y="-229.8" font-family="Times,serif" font-size="14.00">SharedModule </text>
+<polygon fill="#fb8072" stroke="black" points="287.92,-252 186.08,-252 186.08,-216 287.92,-216 287.92,-252"/>
+<text text-anchor="middle" x="237" y="-229.8" font-family="Times,serif" font-size="14.00">SharedModule </text>
 </g>
 <!-- FilestackModule&#45;&gt;SharedModule  -->
 <g id="edge5" class="edge">
 <title>FilestackModule&#45;&gt;SharedModule </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M247.96,-187.11C247.96,-187.11 247.96,-205.99 247.96,-205.99"/>
-<polygon fill="black" stroke="black" points="244.46,-205.99 247.96,-215.99 251.46,-205.99 244.46,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M268.96,-187.11C268.96,-187.11 268.96,-205.99 268.96,-205.99"/>
+<polygon fill="black" stroke="black" points="265.46,-205.99 268.96,-215.99 272.46,-205.99 265.46,-205.99"/>
 </g>
 <!-- SharedModule -->
 <g id="node4" class="node">
 <title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="122.42,-122 119.42,-126 98.42,-126 95.42,-122 23.58,-122 23.58,-86 122.42,-86 122.42,-122"/>
-<text text-anchor="middle" x="73" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="424.42,-122 421.42,-126 400.42,-126 397.42,-122 325.58,-122 325.58,-86 424.42,-86 424.42,-122"/>
+<text text-anchor="middle" x="375" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
 </g>
 <!-- SharedModule&#45;&gt;FilestackModule -->
 <g id="edge3" class="edge">
 <title>SharedModule&#45;&gt;FilestackModule</title>
-<path fill="none" stroke="black" d="M73,-122.11C73,-141.34 73,-169 73,-169 73,-169 218.84,-169 218.84,-169"/>
-<polygon fill="black" stroke="black" points="218.84,-172.5 228.84,-169 218.84,-165.5 218.84,-172.5"/>
+<path fill="none" stroke="black" d="M342.92,-122.11C342.92,-122.11 342.92,-140.99 342.92,-140.99"/>
+<polygon fill="black" stroke="black" points="339.42,-140.99 342.92,-150.99 346.42,-140.99 339.42,-140.99"/>
 </g>
 <!-- FilestackService -->
 <g id="node7" class="node">
@@ -115,8 +115,8 @@
 <!-- FilestackService&#45;&gt;FilestackModule -->
 <g id="edge6" class="edge">
 <title>FilestackService&#45;&gt;FilestackModule</title>
-<path fill="none" stroke="black" d="M523,-122.11C523,-141.34 523,-169 523,-169 523,-169 349.13,-169 349.13,-169"/>
-<polygon fill="black" stroke="black" points="349.13,-165.5 339.13,-169 349.13,-172.5 349.13,-165.5"/>
+<path fill="none" stroke="black" d="M523,-122.11C523,-141.34 523,-169 523,-169 523,-169 370.29,-169 370.29,-169"/>
+<polygon fill="black" stroke="black" points="370.29,-165.5 360.29,-169 370.29,-172.5 370.29,-165.5"/>
 </g>
 </g>
 </svg>

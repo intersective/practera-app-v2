@@ -24,99 +24,99 @@
 <title>cluster_ActivityModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 816,-268 816,-70 8,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_ActivityModule_imports</title>
-<polygon fill="none" stroke="black" points="526,-78 526,-130 808,-130 808,-78 526,-78"/>
+<g id="clust2" class="cluster">
+<title>cluster_ActivityModule_declarations</title>
+<polygon fill="none" stroke="black" points="474,-78 474,-130 808,-130 808,-78 474,-78"/>
 </g>
 <g id="clust8" class="cluster">
 <title>cluster_ActivityModule_providers</title>
-<polygon fill="none" stroke="black" points="358,-78 358,-130 518,-130 518,-78 358,-78"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_ActivityModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 350,-130 350,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="306,-78 306,-130 466,-130 466,-78 306,-78"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_ActivityModule_exports</title>
-<polygon fill="none" stroke="black" points="365,-208 365,-260 511,-260 511,-208 365,-208"/>
+<polygon fill="none" stroke="black" points="313,-208 313,-260 459,-260 459,-208 313,-208"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_ActivityModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 298,-130 298,-78 16,-78"/>
 </g>
 <!-- ActivityComponent -->
 <g id="node1" class="node">
 <title>ActivityComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="341.72,-122 214.28,-122 214.28,-86 341.72,-86 341.72,-122"/>
-<text text-anchor="middle" x="278" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="799.72,-122 672.28,-122 672.28,-86 799.72,-86 799.72,-122"/>
+<text text-anchor="middle" x="736" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityComponent</text>
 </g>
 <!-- ActivityModule -->
 <g id="node3" class="node">
 <title>ActivityModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="490.93,-187 487.93,-191 466.93,-191 463.93,-187 385.07,-187 385.07,-151 490.93,-151 490.93,-187"/>
-<text text-anchor="middle" x="438" y="-164.8" font-family="Times,serif" font-size="14.00">ActivityModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="438.93,-187 435.93,-191 414.93,-191 411.93,-187 333.07,-187 333.07,-151 438.93,-151 438.93,-187"/>
+<text text-anchor="middle" x="386" y="-164.8" font-family="Times,serif" font-size="14.00">ActivityModule</text>
 </g>
 <!-- ActivityComponent&#45;&gt;ActivityModule -->
 <g id="edge1" class="edge">
 <title>ActivityComponent&#45;&gt;ActivityModule</title>
-<path fill="none" stroke="black" d="M278,-122.02C278,-139.37 278,-163 278,-163 278,-163 375.17,-163 375.17,-163"/>
-<polygon fill="black" stroke="black" points="375.17,-166.5 385.17,-163 375.17,-159.5 375.17,-166.5"/>
+<path fill="none" stroke="black" d="M736,-122.28C736,-143.32 736,-175 736,-175 736,-175 448.78,-175 448.78,-175"/>
+<polygon fill="black" stroke="black" points="448.78,-171.5 438.78,-175 448.78,-178.5 448.78,-171.5"/>
 </g>
 <!-- ActivityRoutingComponent -->
 <g id="node2" class="node">
 <title>ActivityRoutingComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="196.33,-122 23.67,-122 23.67,-86 196.33,-86 196.33,-122"/>
-<text text-anchor="middle" x="110" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityRoutingComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="654.33,-122 481.67,-122 481.67,-86 654.33,-86 654.33,-122"/>
+<text text-anchor="middle" x="568" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityRoutingComponent</text>
 </g>
 <!-- ActivityRoutingComponent&#45;&gt;ActivityModule -->
 <g id="edge2" class="edge">
 <title>ActivityRoutingComponent&#45;&gt;ActivityModule</title>
-<path fill="none" stroke="black" d="M110,-122.28C110,-143.32 110,-175 110,-175 110,-175 374.94,-175 374.94,-175"/>
-<polygon fill="black" stroke="black" points="374.94,-178.5 384.94,-175 374.94,-171.5 374.94,-178.5"/>
+<path fill="none" stroke="black" d="M568,-122.02C568,-139.37 568,-163 568,-163 568,-163 449.13,-163 449.13,-163"/>
+<polygon fill="black" stroke="black" points="449.13,-159.5 439.13,-163 449.13,-166.5 449.13,-159.5"/>
 </g>
 <!-- ActivityComponent  -->
 <g id="node6" class="node">
 <title>ActivityComponent </title>
-<polygon fill="#fb8072" stroke="black" points="503.22,-252 372.78,-252 372.78,-216 503.22,-216 503.22,-252"/>
-<text text-anchor="middle" x="438" y="-229.8" font-family="Times,serif" font-size="14.00">ActivityComponent </text>
+<polygon fill="#fb8072" stroke="black" points="451.22,-252 320.78,-252 320.78,-216 451.22,-216 451.22,-252"/>
+<text text-anchor="middle" x="386" y="-229.8" font-family="Times,serif" font-size="14.00">ActivityComponent </text>
 </g>
 <!-- ActivityModule&#45;&gt;ActivityComponent  -->
 <g id="edge5" class="edge">
 <title>ActivityModule&#45;&gt;ActivityComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M438,-187.11C438,-187.11 438,-205.99 438,-205.99"/>
-<polygon fill="black" stroke="black" points="434.5,-205.99 438,-215.99 441.5,-205.99 434.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M386,-187.11C386,-187.11 386,-205.99 386,-205.99"/>
+<polygon fill="black" stroke="black" points="382.5,-205.99 386,-215.99 389.5,-205.99 382.5,-205.99"/>
 </g>
 <!-- ActivityRoutingModule -->
 <g id="node4" class="node">
 <title>ActivityRoutingModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="800.05,-122 797.05,-126 776.05,-126 773.05,-122 649.95,-122 649.95,-86 800.05,-86 800.05,-122"/>
-<text text-anchor="middle" x="725" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityRoutingModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="290.05,-122 287.05,-126 266.05,-126 263.05,-122 139.95,-122 139.95,-86 290.05,-86 290.05,-122"/>
+<text text-anchor="middle" x="215" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityRoutingModule</text>
 </g>
 <!-- ActivityRoutingModule&#45;&gt;ActivityModule -->
 <g id="edge3" class="edge">
 <title>ActivityRoutingModule&#45;&gt;ActivityModule</title>
-<path fill="none" stroke="black" d="M725,-122.28C725,-143.32 725,-175 725,-175 725,-175 500.97,-175 500.97,-175"/>
-<polygon fill="black" stroke="black" points="500.97,-171.5 490.97,-175 500.97,-178.5 500.97,-171.5"/>
+<path fill="none" stroke="black" d="M215,-122.02C215,-139.37 215,-163 215,-163 215,-163 322.83,-163 322.83,-163"/>
+<polygon fill="black" stroke="black" points="322.83,-166.5 332.83,-163 322.83,-159.5 322.83,-166.5"/>
 </g>
 <!-- SharedModule -->
 <g id="node5" class="node">
 <title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="632.42,-122 629.42,-126 608.42,-126 605.42,-122 533.58,-122 533.58,-86 632.42,-86 632.42,-122"/>
-<text text-anchor="middle" x="583" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="122.42,-122 119.42,-126 98.42,-126 95.42,-122 23.58,-122 23.58,-86 122.42,-86 122.42,-122"/>
+<text text-anchor="middle" x="73" y="-99.8" font-family="Times,serif" font-size="14.00">SharedModule</text>
 </g>
 <!-- SharedModule&#45;&gt;ActivityModule -->
 <g id="edge4" class="edge">
 <title>SharedModule&#45;&gt;ActivityModule</title>
-<path fill="none" stroke="black" d="M583,-122.02C583,-139.37 583,-163 583,-163 583,-163 500.76,-163 500.76,-163"/>
-<polygon fill="black" stroke="black" points="500.76,-159.5 490.76,-163 500.76,-166.5 500.76,-159.5"/>
+<path fill="none" stroke="black" d="M73,-122.28C73,-143.32 73,-175 73,-175 73,-175 323.26,-175 323.26,-175"/>
+<polygon fill="black" stroke="black" points="323.26,-178.5 333.26,-175 323.26,-171.5 323.26,-178.5"/>
 </g>
 <!-- ActivityService -->
 <g id="node7" class="node">
 <title>ActivityService</title>
-<ellipse fill="#fdb462" stroke="black" cx="438" cy="-104" rx="71.78" ry="18"/>
-<text text-anchor="middle" x="438" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityService</text>
+<ellipse fill="#fdb462" stroke="black" cx="386" cy="-104" rx="71.78" ry="18"/>
+<text text-anchor="middle" x="386" y="-99.8" font-family="Times,serif" font-size="14.00">ActivityService</text>
 </g>
 <!-- ActivityService&#45;&gt;ActivityModule -->
 <g id="edge6" class="edge">
 <title>ActivityService&#45;&gt;ActivityModule</title>
-<path fill="none" stroke="black" d="M438,-122.11C438,-122.11 438,-140.99 438,-140.99"/>
-<polygon fill="black" stroke="black" points="434.5,-140.99 438,-150.99 441.5,-140.99 434.5,-140.99"/>
+<path fill="none" stroke="black" d="M386,-122.11C386,-122.11 386,-140.99 386,-140.99"/>
+<polygon fill="black" stroke="black" points="382.5,-140.99 386,-150.99 389.5,-140.99 382.5,-140.99"/>
 </g>
 </g>
 </svg>
