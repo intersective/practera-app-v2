@@ -24,6 +24,10 @@
 <title>cluster_EventListModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="13,-70 13,-268 483,-268 483,-70 13,-70"/>
 </g>
+<g id="clust5" class="cluster">
+<title>cluster_EventListModule_exports</title>
+<polygon fill="none" stroke="black" points="141,-208 141,-260 297,-260 297,-208 141,-208"/>
+</g>
 <g id="clust7" class="cluster">
 <title>cluster_EventListModule_providers</title>
 <polygon fill="none" stroke="black" points="303,-78 303,-130 475,-130 475,-78 303,-78"/>
@@ -35,10 +39,6 @@
 <g id="clust4" class="cluster">
 <title>cluster_EventListModule_imports</title>
 <polygon fill="none" stroke="black" points="21,-78 21,-130 135,-130 135,-78 21,-78"/>
-</g>
-<g id="clust5" class="cluster">
-<title>cluster_EventListModule_exports</title>
-<polygon fill="none" stroke="black" points="141,-208 141,-260 297,-260 297,-208 141,-208"/>
 </g>
 <!-- EventListComponent -->
 <g id="node1" class="node">
