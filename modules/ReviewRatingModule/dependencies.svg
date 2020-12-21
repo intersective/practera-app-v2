@@ -24,13 +24,13 @@
 <title>cluster_ReviewRatingModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="44,-70 44,-268 452,-268 452,-70 44,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_ReviewRatingModule_exports</title>
-<polygon fill="none" stroke="black" points="164,-208 164,-260 344,-260 344,-208 164,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_ReviewRatingModule_declarations</title>
 <polygon fill="none" stroke="black" points="266,-78 266,-130 444,-130 444,-78 266,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_ReviewRatingModule_exports</title>
+<polygon fill="none" stroke="black" points="164,-208 164,-260 344,-260 344,-208 164,-208"/>
 </g>
 <g id="clust7" class="cluster">
 <title>cluster_ReviewRatingModule_providers</title>

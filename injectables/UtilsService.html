@@ -155,6 +155,9 @@
                                 <a href="#openUrl">openUrl</a>
                             </li>
                             <li>
+                                <a href="#redirectToUrl">redirectToUrl</a>
+                            </li>
+                            <li>
                                 <a href="#remove">remove</a>
                             </li>
                             <li>
@@ -1766,6 +1769,76 @@ Z for timezone (UTC) delimiter (+0000)</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="redirectToUrl"></a>
+                    <span class="name">
+                        <b>
+                            redirectToUrl
+                        </b>
+                        <a href="#redirectToUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>redirectToUrl(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="382"
+                            class="link-to-prism">src/app/services/utils.service.ts:382</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
                         <b>
@@ -2714,6 +2787,10 @@ export class UtilsService {
       }
       return time.toISOString();
     }
+  }
+
+  redirectToUrl(url: string) {
+    window.location.href &#x3D; &#x60;${ url.match(/^https*:\/\//) ? &#x27;&#x27; : &#x27;https://&#x27; }${ url }&#x60;;
   }
 }
 </code></pre>

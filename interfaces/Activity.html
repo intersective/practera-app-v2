@@ -236,6 +236,7 @@ import { UtilsService } from &#x27;@services/utils.service&#x27;;
 import { BrowserStorageService } from &#x27;@services/storage.service&#x27;;
 import { NotificationService } from &#x27;@shared/notification/notification.service&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
+import { NewRelicService } from &#x27;@shared/new-relic/new-relic.service&#x27;;
 
 /**
  * @name api
@@ -285,6 +286,7 @@ export class ActivityService {
     private utils: UtilsService,
     public storage: BrowserStorageService,
     private router: Router,
+    private readonly newRelic: NewRelicService,
     private notification: NotificationService
   ) {}
 
@@ -386,6 +388,15 @@ export class ActivityService {
       }
       return route;
     }
+
+    // check if we need to redirect user to external url
+    const referrer &#x3D; this.storage.getReferrer();
+    if (this.utils.has(referrer, &#x27;activityTaskUrl&#x27;)) {
+      this.newRelic.actionText(&#x27;browse to Activity Task return link&#x27;);
+      this.utils.redirectToUrl(referrer.activityTaskUrl);
+      return ;
+    }
+
     if (res.task) {
       // pop up activity completed modal
       this.notification.activityCompletePopUp(activityId, justFinished);
