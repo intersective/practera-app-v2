@@ -728,8 +728,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="252"
-                            class="link-to-prism">src/app/activity/activity.component.ts:252</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="246"
+                            class="link-to-prism">src/app/activity/activity.component.ts:246</a></div>
                 </td>
             </tr>
 
@@ -833,8 +833,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="210"
-                            class="link-to-prism">src/app/activity/activity.component.ts:210</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">src/app/activity/activity.component.ts:204</a></div>
                 </td>
             </tr>
 
@@ -942,8 +942,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="156"
-                            class="link-to-prism">src/app/activity/activity.component.ts:156</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/app/activity/activity.component.ts:150</a></div>
                 </td>
             </tr>
 
@@ -1008,8 +1008,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="191"
-                            class="link-to-prism">src/app/activity/activity.component.ts:191</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">src/app/activity/activity.component.ts:185</a></div>
                 </td>
             </tr>
 
@@ -1113,8 +1113,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="265"
-                            class="link-to-prism">src/app/activity/activity.component.ts:265</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="259"
+                            class="link-to-prism">src/app/activity/activity.component.ts:259</a></div>
                 </td>
             </tr>
 
@@ -1179,8 +1179,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="241"
-                            class="link-to-prism">src/app/activity/activity.component.ts:241</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="235"
+                            class="link-to-prism">src/app/activity/activity.component.ts:235</a></div>
                 </td>
             </tr>
 
@@ -1249,8 +1249,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="256"
-                            class="link-to-prism">src/app/activity/activity.component.ts:256</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">src/app/activity/activity.component.ts:250</a></div>
                 </td>
             </tr>
 
@@ -1815,12 +1815,6 @@ export class ActivityComponent {
   }
 
   back() {
-    const referrer &#x3D; this.storage.getReferrer();
-    if (this.utils.has(referrer, &#x27;activityTaskUrl&#x27;)) {
-      this.newRelic.actionText(&#x27;browse to Activity Task return link&#x27;);
-      this.utils.redirectToUrl(referrer.activityTaskUrl);
-      return ;
-    }
     this._navigate([ &#x27;app&#x27;, &#x27;home&#x27; ]);
     this.newRelic.actionText(&#x27;Back button pressed on Activities Page.&#x27;);
   }

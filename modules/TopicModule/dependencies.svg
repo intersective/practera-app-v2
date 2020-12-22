@@ -24,10 +24,6 @@
 <title>cluster_TopicModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 834,-268 834,-70 8,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_TopicModule_exports</title>
-<polygon fill="none" stroke="black" points="170,-208 170,-260 682,-260 682,-208 170,-208"/>
-</g>
 <g id="clust7" class="cluster">
 <title>cluster_TopicModule_providers</title>
 <polygon fill="none" stroke="black" points="684,-78 684,-130 826,-130 826,-78 684,-78"/>
@@ -35,6 +31,10 @@
 <g id="clust4" class="cluster">
 <title>cluster_TopicModule_imports</title>
 <polygon fill="none" stroke="black" points="154,-78 154,-130 676,-130 676,-78 154,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_TopicModule_exports</title>
+<polygon fill="none" stroke="black" points="170,-208 170,-260 682,-260 682,-208 170,-208"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_TopicModule_declarations</title>

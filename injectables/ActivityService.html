@@ -127,12 +127,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(request: <a href="../injectables/RequestService.html">RequestService</a>, utils: <a href="../injectables/UtilsService.html">UtilsService</a>, storage: <a href="../injectables/BrowserStorageService.html">BrowserStorageService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, newRelic: <a href="../injectables/NewRelicService.html">NewRelicService</a>, notification: <a href="../injectables/NotificationService.html">NotificationService</a>)</code>
+<code>constructor(request: <a href="../injectables/RequestService.html">RequestService</a>, utils: <a href="../injectables/UtilsService.html">UtilsService</a>, storage: <a href="../injectables/BrowserStorageService.html">BrowserStorageService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, notification: <a href="../injectables/NotificationService.html">NotificationService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/activity/activity.service.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/activity/activity.service.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -198,18 +198,6 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>newRelic</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/NewRelicService.html" target="_self" >NewRelicService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
                                                         <td>notification</td>
                                                   
                                                         <td>
@@ -259,8 +247,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">src/app/activity/activity.service.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">src/app/activity/activity.service.ts:78</a></div>
                 </td>
             </tr>
 
@@ -327,8 +315,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/activity/activity.service.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/activity/activity.service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -393,8 +381,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="191"
-                            class="link-to-prism">src/app/activity/activity.service.ts:191</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="180"
+                            class="link-to-prism">src/app/activity/activity.service.ts:180</a></div>
                 </td>
             </tr>
 
@@ -504,8 +492,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="144"
-                            class="link-to-prism">src/app/activity/activity.service.ts:144</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">src/app/activity/activity.service.ts:142</a></div>
                 </td>
             </tr>
 
@@ -649,7 +637,7 @@ Logic:</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/activity/activity.service.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/activity/activity.service.ts:56</a></div>
                             </td>
                         </tr>
 
@@ -677,7 +665,7 @@ Logic:</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/activity/activity.service.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/activity/activity.service.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -698,7 +686,6 @@ import { UtilsService } from &#x27;@services/utils.service&#x27;;
 import { BrowserStorageService } from &#x27;@services/storage.service&#x27;;
 import { NotificationService } from &#x27;@shared/notification/notification.service&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { NewRelicService } from &#x27;@shared/new-relic/new-relic.service&#x27;;
 
 /**
  * @name api
@@ -748,7 +735,6 @@ export class ActivityService {
     private utils: UtilsService,
     public storage: BrowserStorageService,
     private router: Router,
-    private readonly newRelic: NewRelicService,
     private notification: NotificationService
   ) {}
 
@@ -850,15 +836,6 @@ export class ActivityService {
       }
       return route;
     }
-
-    // check if we need to redirect user to external url
-    const referrer &#x3D; this.storage.getReferrer();
-    if (this.utils.has(referrer, &#x27;activityTaskUrl&#x27;)) {
-      this.newRelic.actionText(&#x27;browse to Activity Task return link&#x27;);
-      this.utils.redirectToUrl(referrer.activityTaskUrl);
-      return ;
-    }
-
     if (res.task) {
       // pop up activity completed modal
       this.notification.activityCompletePopUp(activityId, justFinished);

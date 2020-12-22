@@ -349,8 +349,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="161"
-                            class="link-to-prism">src/app/auth/auth-direct-login/auth-direct-login.component.ts:161</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/auth/auth-direct-login/auth-direct-login.component.ts:149</a></div>
                 </td>
             </tr>
 
@@ -492,8 +492,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="154"
-                            class="link-to-prism">src/app/auth/auth-direct-login/auth-direct-login.component.ts:154</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">src/app/auth/auth-direct-login/auth-direct-login.component.ts:142</a></div>
                 </td>
             </tr>
 
@@ -812,18 +812,6 @@ export class AuthDirectLoginComponent implements OnInit {
           return this._saveOrRedirect([&#x27;app&#x27;, &#x27;home&#x27;], redirectLater);
         }
         return this._saveOrRedirect([&#x27;app&#x27;, &#x27;activity&#x27;, activityId], redirectLater);
-      case &#x27;activity_task&#x27;:
-        if (!activityId) {
-          return this._saveOrRedirect([&#x27;app&#x27;, &#x27;home&#x27;], redirectLater);
-        }
-        const referrerUrl &#x3D; this.route.snapshot.paramMap.get(&#x27;activity_task_referrer_url&#x27;);
-        if (referrerUrl) {
-          // save the referrer url so that we can redirect user later
-          this.storage.setReferrer({
-            activityTaskUrl: referrerUrl
-          });
-        }
-        return this._saveOrRedirect([&#x27;activity-task&#x27;, activityId], redirectLater);
       case &#x27;assessment&#x27;:
         if (!activityId || !contextId || !assessmentId) {
           return this._saveOrRedirect([&#x27;app&#x27;, &#x27;home&#x27;], redirectLater);
