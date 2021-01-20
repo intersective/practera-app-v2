@@ -19,10 +19,12 @@ public class MainActivity extends BridgeActivity {
     this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
       // Additional plugins you've installed go here
       // Ex: add(TotallyAwesomePlugin.class);
-      PushNotifications.start(getApplicationContext(), "c0ba349e-66c6-440d-8ac7-fe229709d088");
-      PushNotifications.addDeviceInterest("general");
+      //PushNotifications.start(getApplicationContext(), "c0ba349e-66c6-440d-8ac7-fe229709d088");
+      PushNotifications.start(getApplicationContext(), "bbc6d8fe-9e50-4bec-865f-4adc1cef05b5");
+      PushNotifications.addDeviceInterest("hello");
       add(PusherBeams.class);
       add(CustomNativePlugin.class);
+      
     }});
   }
 }

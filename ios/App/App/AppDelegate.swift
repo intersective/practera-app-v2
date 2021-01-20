@@ -7,13 +7,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   let pushNotifications = PushNotifications.shared
+  let beamsClient = PushNotifications.shared
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    self.pushNotifications.start(instanceId: "c0ba349e-66c6-440d-8ac7-fe229709d088")
-    self.pushNotifications.registerForRemoteNotifications()
-    try? self.pushNotifications.addDeviceInterest(interest: "general")
-    return true
+
+    /*** change by adding beams-- Ronak***/
+    // self.pushNotifications.start(instanceId: "c0ba349e-66c6-440d-8ac7-fe229709d088")
+    // self.pushNotifications.registerForRemoteNotifications()
+    // try? self.pushNotifications.addDeviceInterest(interest: "general")
+   /*** change by adding beams-- Ronak***/
+
+
+    self.beamsClient.start(instanceId: "general")
+    self.beamsClient.registerForRemoteNotifications()
+     return true
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
