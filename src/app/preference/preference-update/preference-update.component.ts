@@ -55,12 +55,6 @@ export class PreferenceUpdateComponent extends RouterEnter {
     super(router);
   }
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.onEnter();
-    });
-  }
-
   ngOnDestroy() {
     if (
       this.preferenceSubject$ &&
@@ -70,31 +64,27 @@ export class PreferenceUpdateComponent extends RouterEnter {
     }
   }
   onEnter() {
-    this.currentPreference = {
-    name: "",
-    description: "",
-    options: [],
-    remarks: "",
-    key: "",
-  };
-    console.log("currentPreference in onEnter", this.currentPreference);
+  //   this.currentPreference = {
+  //   name: "",
+  //   description: "",
+  //   options: [],
+  //   remarks: "",
+  //   key: "",
+  // };
     if (this.inputId) {
       this.key = this.inputId;
     }
-    console.log("onEnter");
     this.preferenceService.getPreference();
     let key = this.getKey();
-    console.log("key", key);
     this.preferenceSubject$ = this.preferenceService.preference$.subscribe(
       (res) => {
         this.preferences = res;
-        console.log("preferences", this.preferences);
         if (this.preferences && key) {
           this.currentPreference = this.filterPreferences(
             this.preferences,
             key
           );
-          console.log("currentPreference", this.currentPreference);
+
         }
       }
     );

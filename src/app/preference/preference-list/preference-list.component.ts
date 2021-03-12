@@ -11,7 +11,7 @@ import { PreferenceUpdateComponent } from '../preference-update/preference-updat
   templateUrl: './preference-list.component.html',
   styleUrls: ['./preference-list.component.scss']
 })
-export class PreferenceListComponent implements OnDestroy, OnInit {
+export class PreferenceListComponent implements OnDestroy {
 
   preferences$ = this.preferenceService.preference$;
 
@@ -20,6 +20,7 @@ export class PreferenceListComponent implements OnDestroy, OnInit {
   prefAPI: any;
   @Output() navigate = new EventEmitter();
   @Input() currentPreference;
+  @Output() preferenceReady = new EventEmitter();
 
   constructor(
     private preferenceService: PreferenceService,
@@ -30,11 +31,6 @@ export class PreferenceListComponent implements OnDestroy, OnInit {
     private ngZone: NgZone,
   ) {}
 
-  ngOnInit() {
-    this.preferenceSubject$ = this.activatedRoute.data.subscribe(() => {
-      this.preferenceService.getPreference();
-    });
-  }
 
   ngOnDestroy() {
     if (this.preferenceSubject$ instanceof Subscription) {
@@ -52,6 +48,8 @@ export class PreferenceListComponent implements OnDestroy, OnInit {
   onEnter() {
     this.preferenceSubject$ = this.activatedRoute.data.subscribe(() => {
       this.preferenceService.getPreference();
+      this.preferenceReady.emit(this.preferences$[0].categories[0].preferences[0]);
+
     });
   }
   async goToPreference(pref) {
