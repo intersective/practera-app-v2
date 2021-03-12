@@ -61,17 +61,6 @@ export class PreferenceListComponent implements OnDestroy, OnInit {
         return this.router.navigate(['preference-update',pref.key]);
       });
     } else {
-    //   switch (pref[0]) {
-    //     case 'preference-update':
-    //       this.navigate.emit({
-    //         preferenceKey: pref[1]
-    //       });
-    //       break;
-    //     default:
-    //       return this.ngZone.run(() => {
-    //         return this.router.navigate(pref);
-    //       });
-    //   }
       this.navigate.emit(pref)
     }
   }

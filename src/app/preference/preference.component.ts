@@ -23,17 +23,18 @@ export class PreferenceComponent extends RouterEnter {
    }
    onEnter() {
     this.preferenceKey = null;
-    
+    console.log('onEnter inside preference')
     // trigger onEnter after the element get generated
     setTimeout(() => {
       this.preferenceList.onEnter();
     });
   } 
   goto(event) {
-    this.preferenceKey = event.preferenceKey;
-        // setTimeout(() => {
-        //   this.preferenceDetail.onEnter();
-        // });
+    console.log('goto inside Preference')
+    this.preferenceKey = event.key;
+        setTimeout(() => {
+          this.preferenceDetail.onEnter();
+        });
   }
 
 

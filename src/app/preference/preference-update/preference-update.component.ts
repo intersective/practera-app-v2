@@ -1,21 +1,29 @@
-import { Component, OnInit, OnDestroy, EventEmitter, Input, Output, NgZone  } from '@angular/core';
-import { UtilsService } from '@services/utils.service';
-import { PreferenceService, Category } from '../preference.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RouterEnter } from '@services/router-enter.service';
-import { Subscription } from 'rxjs/Subscription';
-import { ModalController } from '@ionic/angular';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  EventEmitter,
+  Input,
+  Output,
+  NgZone,
+} from "@angular/core";
+import { UtilsService } from "@services/utils.service";
+import { PreferenceService, Category } from "../preference.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { RouterEnter } from "@services/router-enter.service";
+import { Subscription } from "rxjs/Subscription";
+import { ModalController } from "@ionic/angular";
 
 @Component({
-  selector: 'app-preference-update',
-  templateUrl: './preference-update.component.html',
-  styleUrls: ['./preference-update.component.scss']
+  selector: "app-preference-update",
+  templateUrl: "./preference-update.component.html",
+  styleUrls: ["./preference-update.component.scss"],
 })
 export class PreferenceUpdateComponent extends RouterEnter {
   @Input() inputId: string;
   @Output() navigate = new EventEmitter();
-  
-  routeUrl = '/preference-update/';
+
+  routeUrl = "/preference-update/";
   noHistoryStack = true;
   preferences: {
     categories: any;
@@ -23,11 +31,11 @@ export class PreferenceUpdateComponent extends RouterEnter {
 
   preferenceSubject$: Subscription;
   currentPreference = {
-    name: '',
-      description: '',
-      options: '',
-      remarks: '',
-      key:''
+    name: "",
+    description: "",
+    options: [],
+    remarks: "",
+    key: "",
   };
   private key: string;
   private newUpdates: {
@@ -42,42 +50,54 @@ export class PreferenceUpdateComponent extends RouterEnter {
     public router: Router,
     private utils: UtilsService,
     private modalController: ModalController,
-    private ngZone: NgZone,
+    private ngZone: NgZone
   ) {
     super(router);
   }
 
   ngOnInit() {
-    this.preferenceService.getPreference();
-    let key = this.getKey();
-    console.log('key',key)
-    this.preferenceSubject$ = this.preferenceService.preference$.subscribe(res => {
-      this.preferences = res;
-      console.log('preferences', this.preferences)
-      if (this.preferences && key) {
-       this.currentPreference = this.filterPreferences(this.preferences, key);
-       console.log('currentPreference',this.currentPreference)
-      }
+    setTimeout(() => {
+      this.onEnter();
     });
   }
-  
+
   ngOnDestroy() {
-    if (this.preferenceSubject$ && this.preferenceSubject$ instanceof Subscription) {
+    if (
+      this.preferenceSubject$ &&
+      this.preferenceSubject$ instanceof Subscription
+    ) {
       this.preferenceSubject$.unsubscribe();
     }
   }
   onEnter() {
     this.currentPreference = {
-      name: '',
-        description: '',
-        options: '',
-        remarks: '',
-        key:''
-    };
+    name: "",
+    description: "",
+    options: [],
+    remarks: "",
+    key: "",
+  };
+    console.log("currentPreference in onEnter", this.currentPreference);
     if (this.inputId) {
       this.key = this.inputId;
-    } 
-    
+    }
+    console.log("onEnter");
+    this.preferenceService.getPreference();
+    let key = this.getKey();
+    console.log("key", key);
+    this.preferenceSubject$ = this.preferenceService.preference$.subscribe(
+      (res) => {
+        this.preferences = res;
+        console.log("preferences", this.preferences);
+        if (this.preferences && key) {
+          this.currentPreference = this.filterPreferences(
+            this.preferences,
+            key
+          );
+          console.log("currentPreference", this.currentPreference);
+        }
+      }
+    );
   }
   /**
    * show medium choices for current preference key
@@ -89,8 +109,8 @@ export class PreferenceUpdateComponent extends RouterEnter {
   filterPreferences(preferences: { categories?: Category[] }, key: string) {
     let result;
     if (preferences && preferences.categories) {
-      preferences.categories.find(cat => {
-        result = cat.preferences.find(pref => {
+      preferences.categories.find((cat) => {
+        result = cat.preferences.find((pref) => {
           return pref.key === key;
         });
         return result;
@@ -101,7 +121,7 @@ export class PreferenceUpdateComponent extends RouterEnter {
   }
 
   private getKey() {
-    if(this.utils.isMobile()) {
+    if (this.utils.isMobile()) {
       return this.activatedRoute.snapshot.params.key;
     } else {
       return this.inputId;
@@ -113,7 +133,7 @@ export class PreferenceUpdateComponent extends RouterEnter {
    * @description prepare new data changes for PUT request to preference API (with @func back())
    * @param {string, checked } changes medium in string, event is ionic ion-toggle event object
    */
-  updatePreference(changes: { medium: string; checked: boolean; }) {
+  updatePreference(changes: { medium: string; checked: boolean }) {
     const { medium, checked } = changes;
     if (!this.newUpdates) {
       this.newUpdates = {};
@@ -121,7 +141,7 @@ export class PreferenceUpdateComponent extends RouterEnter {
 
     if (!this.newUpdates[this.currentPreference.key]) {
       this.newUpdates[this.currentPreference.key] = {
-        [medium]: checked
+        [medium]: checked,
       };
     } else {
       this.newUpdates[this.currentPreference.key][medium] = checked;
@@ -143,42 +163,11 @@ export class PreferenceUpdateComponent extends RouterEnter {
     }
     return;
   }
-
-   // force every navigation happen under radar of angular
-  //  private _navigate(direction): Promise<boolean> {
-  //   if (!direction) {
-  //     return;
-  //   }
-  //   if (this.utils.isMobile()) {
-  //     return this.ngZone.run(() => {
-  //       return this.router.navigate(direction);
-  //     });
-  //   } else {
-  //     // emit event to parent component(task component)
-  //     switch (direction[0]) {
-  //       case 'preference-update':
-  //         this.navigate.emit({
-  //           preferenceKey: direction[2]
-  //         });
-  //         break;
-  //       default:
-  //         return this.ngZone.run(() => {
-  //           return this.router.navigate(direction);
-  //         });
-  //     }
-  //   }
-  // }
-
-  /**
-   * @name back
-   * @description manual back button to go back to a pre-structured routing
-   *              (back to "/preference")
-   */
   back() {
     this.pushPreferenceUpdate().then(() => {
-      this.router.navigate(['/preference']);
+      return this.ngZone.run(() => {
+        return this.router.navigate(['app/preference']);
+      });
     });
   }
-
 }
-
